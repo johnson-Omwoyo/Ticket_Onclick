@@ -1,0 +1,23 @@
+.page-name {
+  color: aliceblue;
+}
+.navbar-ground {
+  background: #343f55;
+  border-radius: 12px;
+}
+.navbar-ground .btn {
+  color: white;
+}
+.navbar-ground .rounded-pill {
+  color: #343f55;
+  background: white;
+}
+.navbar-ground .rounded-pill:hover {
+  border: 1px solid white;
+  color: white;
+}
+.navbar-ground .btn:hover {
+  border: 1px solid white;
+  color: white;
+}
+
