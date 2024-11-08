@@ -1,0 +1,62 @@
+.hero-text {
+  background: #918f8a;
+  color: white;
+  border-radius: 12px;
+}
+.hero-text h1 {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-text h1::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: -10px;
+  right: -10px;
+  height: 4px;
+  background-color: white;
+}
+
+.top-image {
+  border-radius: 12px;
+}
+.forget-about {
+  font-size: 24px;
+}
+.hero-text h1 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.category-heading {
+  position: relative;
+  display: inline-block;
+  color: black;
+  font-size: 48px;
+}
+.category-heading::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: -10px;
+  right: -10px;
+  height: 4px;
+  background-color: black;
+}
+.categories {
+  background-color: #c2b19c;
+}
+.category-card{
+  border-radius: 15px;
+}
+.category-description{
+  font-size: 13px;
+  font-weight: 600;
+}
+.category-name{
+  font-weight: 500;
+}
+.category-body img{
+  height: 320px;
+  border-radius: 12px;
+}
+/* hhhhhhhhhhhhhh */
