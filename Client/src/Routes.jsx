@@ -4,6 +4,7 @@ import App from "./App";
 import Loginpage from "./Pages/Loginpage";
 import Registerpage from "./Pages/Registerpage";
 import Ticketspage from "./Pages/Ticketspage";
+import Buyingpage from "./Pages/Buyingpage";
 
 const PageRoutes = [
   {
@@ -27,6 +28,10 @@ const PageRoutes = [
       {
         path: "/ticket",
         element: <Ticketspage />,
+      },
+      {
+        path: "/buy",
+        element: <Buyingpage />,
       },
     ],
   },
