@@ -1,6 +1,6 @@
 /* User Profile Page Styles */
 .hero-text {
-  background: #d3c8b4;
+  /* background: #d3c8b4; */
   color: white;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -23,8 +23,8 @@
 
 .top-image {
   border-radius: 12px;
-  max-height: 32px;
-  max-width: 32px;
+  /* max-height: 32px;
+  max-width: 32px; */
 }
 
 .forget-about {
