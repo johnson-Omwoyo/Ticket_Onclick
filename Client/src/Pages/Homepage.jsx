@@ -109,7 +109,7 @@ function Homepage() {
                 <div
                   key={index}
                   onClick={() => handleCategoryClick(category.name)}
-                  className="col-12 card p-4 shadow"
+                  className="col-12 card the-card p-4 shadow"
                 >
                   <img
                     className="img-fluid"

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import "./LoginPage.css"; // Import the CSS for login page
-import 'bootstrap/dist/css/bootstrap.min.css';
 import loginPicture from "../assets/wetransfer_3-jpg_2024-11-08_0922/Beating the odds_.jpg"; // Adjust the path if necessary
 
 const LoginPage = () => {
@@ -41,7 +41,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center min-vh-100 bg-dark py-5">
+    <div className="d-flex flex-column justify-content-center align-items-center py-5  bg-dark">
       <h3 className="text-white font-weight-bold mb-4 text-center w-100">Login</h3>
       <div className="card shadow-lg p-4 w-100" style={{ maxWidth: '1000px' }}>
         <div className="row">
@@ -81,7 +81,7 @@ const LoginPage = () => {
             </form>
           </div>
           <div className="col-md-6 d-flex justify-content-center align-items-center">
-            <img src={loginPicture} alt="Login" className="img-fluid rounded" style={{ maxWidth: '300px' }} />
+            <img src={loginPicture} alt="Login" className="image-fluid img-fluid rounded" style={{ maxWidth: '300px' }} />
           </div>
         </div>
       </div>
