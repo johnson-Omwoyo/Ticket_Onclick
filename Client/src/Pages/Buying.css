@@ -1,0 +1,21 @@
+.cost{
+    background-color: #766e66;
+    border-radius:12px ;
+}
+
+.buy-ticket{
+    background-color:#312e2b ;
+}
+.line {
+    width: 100%;      
+    height: 1px;       
+    background-color: rgb(211, 209, 209); 
+    margin: 20px 0;     
+  }
+  .event-image{
+    border-radius: 12px;
+  }
+  .image-side h1{
+    font-size: 52px;
+    color: rgb(211, 209, 209);
+  }
