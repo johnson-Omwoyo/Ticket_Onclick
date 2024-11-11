@@ -1,7 +1,8 @@
 .hero-text {
   background: #918f8a;
   color: white;
-  border-radius: 12px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 .hero-text h1 {
   position: relative;
@@ -28,10 +29,11 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 .category-heading {
+  font-family: sans-serif;
   position: relative;
   display: inline-block;
   color: black;
-  font-size: 48px;
+  font-size: 46px;
 }
 .category-heading::after {
   content: "";
@@ -45,18 +47,68 @@
 .categories {
   background-color: #c2b19c;
 }
-.category-card{
+.category-card {
   border-radius: 15px;
 }
-.category-description{
-  font-size: 13px;
-  font-weight: 600;
+.category-description {
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: 50;
 }
-.category-name{
-  font-weight: 500;
+.category-name {
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: 550;
 }
-.category-body img{
+
+.category-body img {
   height: 320px;
   border-radius: 12px;
 }
+.category-body .odd {
+  position: sticky;
+  bottom: 0px;
+}
+
 /* hhhhhhhhhhhhhh */
+
+.category-body {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  transition: transform 0.3s ease, opacity 3s ease;
+  border-radius: 44px;
+  background-color: rgb(247, 245, 245);
+
+  max-width: 300px;
+}
+
+.card.odd {
+  top: -20px;
+}
+
+.card.even {
+  top: 20px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  opacity: 1;
+  cursor: pointer;
+}
+.ticket {
+  margin-bottom: -24px;
+  margin-top: -12px;
+  color: beige;
+  font-weight: 700;
+}
+.onclick {
+  margin: -12px;
+  color: #c2b19c;
+  font-weight: 700;
+}
