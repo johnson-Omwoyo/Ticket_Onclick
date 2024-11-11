@@ -1,5 +1,5 @@
 body {
-  background-color: #e0e0e0;
+  /* background-color: #e0e0e0; */
   margin: 0; /* Remove default margin */
   padding: 0; /* Remove default padding */
   overflow-x: hidden; /* Prevent horizontal scrolling */
@@ -21,7 +21,7 @@ body {
   border: 1px solid #ced4da;
 }
 
-.img-fluid {
+.image-fluid {
   object-fit: cover;
   border-radius: 10px;
 }
