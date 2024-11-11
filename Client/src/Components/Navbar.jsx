@@ -25,10 +25,10 @@ function Navbar() {
     navigate("/");
   };
 
-  const handleCategoryClick = () => {
+  const handleCategoryClick = (route) => {
     navigate("/");
     setTimeout(() => {
-      const categoriesElement = document.getElementById("categories");
+      const categoriesElement = document.getElementById(route);
       if (categoriesElement) {
         categoriesElement.scrollIntoView({ behavior: "smooth" });
       }
@@ -62,10 +62,10 @@ function Navbar() {
             >
               EVENTS
             </li>
-            <li className="" onClick={handleCategoryClick}>
+            <li className="" onClick={() => handleCategoryClick("categories")}>
               CATEGORIES
             </li>
-            <li className="" onClick={handleCategoryClick}>
+            <li className="" onClick={() => handleCategoryClick("about")}>
               ABOUT US
             </li>
           </div>

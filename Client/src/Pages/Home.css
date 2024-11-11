@@ -88,8 +88,6 @@
   max-width: 300px;
 }
 
-
-
 .the-card:hover {
   transform: scale(1.05);
   opacity: 1;
@@ -105,4 +103,66 @@
   margin: -12px;
   color: #c2b19c;
   font-weight: 700;
+}
+.quotes {
+  font-size: 100px;
+  color: black;
+}
+.review-image {
+  max-width: 220px;
+  border-radius: 18px;
+}
+.reviews-section {
+  border-radius: 12px;
+  background: rgb(221, 220, 220);
+}
+.reviews-section p {
+  color: #696866;
+}
+.static-numbers {
+  background: rgb(221, 220, 220);
+  border-radius: 12px;
+  padding: 10px;
+}
+.static-numbers h2 {
+  font-weight: 600;
+  font-size: 48px;
+}
+.static-numbers p {
+  color: #7a7977;
+}
+.statistics {
+  border-radius: 12px;
+  background: rgb(240, 236, 236);
+}
+.our-part {
+  background: #d6d5d5;
+}
+.our-part h5 {
+  font-weight: 600;
+}
+.our-part p {
+  opacity: 0.8;
+  font-family: sans-serif;
+  font-weight: 300;
+  /* font-size:14px; */
+}
+.about-heading {
+  font-family: sans-serif;
+  position: relative;
+
+  color: black;
+  font-size: 46px;
+}
+.about-heading::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 10px;
+  right: 10px;
+  height: 4px;
+  background-color: black;
+}
+.abou{
+  background: rgb(250, 249, 249);
 }
