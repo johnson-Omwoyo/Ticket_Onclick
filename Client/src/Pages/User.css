@@ -1,0 +1,98 @@
+/* User Profile Page Styles */
+.hero-text {
+  background: #d3c8b4;
+  color: white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.hero-text h1 {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-text h1::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: -10px;
+  right: -10px;
+  height: 4px;
+  background-color: white;
+}
+
+.top-image {
+  border-radius: 12px;
+  max-height: 32px;
+  max-width: 32px;
+}
+
+.forget-about {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.profile-heading,
+.event-heading {
+  font-family: sans-serif;
+  font-size: 46px;
+  color: black;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.profile-description {
+  font-size: 18px;
+  font-weight: 300;
+  color: #696866;
+}
+
+.profile-info {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.profile-info p {
+  margin: 5px 0;
+}
+
+.active-tickets {
+  background-color: #f9f9f9;
+}
+
+.active-tickets .the-card {
+  position: relative;
+  border-radius: 12px;
+  background-color: #f1f1f1;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.active-tickets .the-card h3,
+.active-tickets .the-card p {
+  margin-bottom: 10px;
+}
+
+.active-tickets .btn {
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.custom-btn-danger {
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 10px;
+  transition: background-color 0.3s;
+  color: white;
+  background-color: #c12a2a;
+  border: none;
+}
+
+.custom-btn-danger:hover {
+  background-color: #9e2020;
+}

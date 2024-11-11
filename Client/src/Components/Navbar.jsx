@@ -112,14 +112,14 @@ function Navbar() {
                     className="btn"
                     onClick={() => navigate("/")}
                   >
-                    My tickets
+                    Active tickets
                   </button>
                   <div className="line my-3"></div>
 
                   <button
                     data-bs-dismiss="offcanvas"
                     className="btn"
-                    onClick={() => navigate("/events")}
+                    onClick={() => navigate("/profile")}
                   >
                     My profile
                   </button>
@@ -128,9 +128,9 @@ function Navbar() {
                   <button
                     data-bs-dismiss="offcanvas"
                     className="btn"
-                    onClick={() => navigate("/events")}
+                    onClick={() =>{ setLoading(true); navigate("/events")}}
                   >
-                    My profile
+                    Organize
                   </button>
                   <div className="line my-3"></div>
 
