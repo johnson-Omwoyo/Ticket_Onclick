@@ -4,7 +4,9 @@ import App from "./App";
 import Loginpage from "./Pages/Loginpage";
 import Registerpage from "./Pages/Registerpage";
 import Ticketspage from "./Pages/Ticketspage";
+
 import UserProfilePage from "./Pages/Userpage";
+
 
 const PageRoutes = [
   {
@@ -30,9 +32,11 @@ const PageRoutes = [
         element: <Ticketspage />,
       },
       {
+
         path:"/profile",
         element:<UserProfilePage/>
       }
+
     ],
   },
 ];
