@@ -7,6 +7,7 @@ import sportsPhoto from "../assets/wetransfer_3-jpg_2024-11-08_0922/valentin-kre
 import agriculturePhoto from "../assets/wetransfer_3-jpg_2024-11-08_0922/polina-kuzovkova-0OkidWKbO2Q-unsplash.jpg";
 import expoPhoto from "../assets/wetransfer_3-jpg_2024-11-08_0922/Unknown-6.jpg";
 import festivalsPhoto from "../assets/wetransfer_3-jpg_2024-11-08_0922/Your Complete Guide To The Best UK Festivals In 2019.jpg";
+import footerPhoto from "../assets/Screenshot from 2024-11-11 23-22-51.png";
 import "bootstrap/dist/css/bootstrap.css";
 
 import "./Home.css";
@@ -136,9 +137,7 @@ function Homepage() {
               <div className="col">
                 <div className="container pt-5">
                   <div className="row">
-                    <div
-                      className="col rounded p-5 shadow-sm our-part"
-                    >
+                    <div className="col rounded p-5 shadow-sm our-part">
                       <h5 className="">Our Story</h5>
                       <p>
                         Lorem ipsum, dolor sit amet consectetur adipisicing
@@ -168,11 +167,7 @@ function Homepage() {
                       {" "}
                       <div className="container-fluid">
                         <div className="row mb-3">
-                         
-                          <div
-                            className="col reviews-section "
-                           
-                          >
+                          <div className="col reviews-section ">
                             <div className="d-flex align-items-center gap-2 justify-content-around p-3">
                               <img
                                 className="img-fluid review-image"
@@ -196,7 +191,7 @@ function Homepage() {
                               <div className="row gap-5">
                                 <div className="col static-numbers shadow text-center">
                                   <h2>
-                                    500 <sup>+</sup>
+                                    300 <sup>+</sup>
                                   </h2>
                                   <p>Satisified Users</p>
                                 </div>
@@ -211,7 +206,7 @@ function Homepage() {
                                   <h2>
                                     10 <sup>+</sup>
                                   </h2>
-                                  <p>Partnerships</p>
+                                  <p>Solid Partnerships</p>
                                 </div>
                               </div>
                             </div>
@@ -224,6 +219,11 @@ function Homepage() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="row footer-image-bg mt-5">
+        <div className="col">
+          <img className="img-fluid footer-photo" src={footerPhoto} alt="" />
         </div>
       </div>
 

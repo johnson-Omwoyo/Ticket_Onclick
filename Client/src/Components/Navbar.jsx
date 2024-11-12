@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 // import sport1 "../assets/wetransfer_3-jpg_2024-11-08_0922/-4.jpg"
+
 import "./Navbar.css";
 
 function Navbar() {
   const [loading, setLoading] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); //  login status
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -107,41 +108,44 @@ function Navbar() {
                   ></button>
                 </div>
                 <div className="offcanvas-body sidebar d-flex flex-column align-items-center">
-                  <button
+                  <div
                     data-bs-dismiss="offcanvas"
-                    className="btn"
+                    className="dash-item p-2 px-5 my-2"
                     onClick={() => navigate("/")}
                   >
                     Active tickets
-                  </button>
-                  <div className="line my-3"></div>
+                  </div>
+                  <div className="line "></div>
 
-                  <button
+                  <div
                     data-bs-dismiss="offcanvas"
-                    className="btn"
+                    className="dash-item p-2 px-5 my-2"
                     onClick={() => navigate("/profile")}
                   >
                     My profile
-                  </button>
-                  <div className="line my-3"></div>
+                  </div>
+                  <div className="line "></div>
 
-                  <button
+                  <div
                     data-bs-dismiss="offcanvas"
-                    className="btn"
-                    onClick={() =>{ setLoading(true); navigate("/events")}}
+                    className="dash-item p-2 px-5 my-2"
+                    onClick={() => {
+                      setLoading(true);
+                      navigate("/events");
+                    }}
                   >
                     Organize
-                  </button>
-                  <div className="line my-3"></div>
+                  </div>
+                  <div className="line "></div>
 
-                  <button
+                  <div
                     data-bs-dismiss="offcanvas"
-                    className="btn"
+                    className="dash-item p-2 px-5 my-2"
                     onClick={handleLogout}
                   >
                     Logout
-                  </button>
-                  <div className="line my-3"></div>
+                  </div>
+                  <div className="line"></div>
                 </div>
               </div>
               {location.pathname != "/login" && (

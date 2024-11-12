@@ -163,6 +163,14 @@
   height: 4px;
   background-color: black;
 }
-.abou{
+.abou {
   background: rgb(250, 249, 249);
+}
+.footer-image-bg img {
+  width: 100%;
+  object-fit: cover;
+  max-height: 320px;
+}
+.footer-image-bg {
+  background: #2a1e11;
 }
