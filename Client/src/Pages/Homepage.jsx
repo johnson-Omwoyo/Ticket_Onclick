@@ -175,7 +175,7 @@ function Homepage() {
                                 alt=""
                               />
                               <p>
-                                <i class=" quotes fa-solid fa-quote-left"></i>{" "}
+                                <i className=" quotes fa-solid fa-quote-left"></i>{" "}
                                 Lorem ipsum dolor sit amet consectetur
                                 adipisicing elit. Adipisci alias at quam, iste
                                 obcaecati suscipit dolorem reiciendis veritatis
@@ -221,11 +221,7 @@ function Homepage() {
           </div>
         </div>
       </div>
-      <div className="row footer-image-bg mt-5">
-        <div className="col">
-          <img className="img-fluid footer-photo" src={footerPhoto} alt="" />
-        </div>
-      </div>
+     
 
       {loading && (
         <div className="spinner-overlay">

@@ -108,14 +108,8 @@ function Navbar() {
                   ></button>
                 </div>
                 <div className="offcanvas-body sidebar d-flex flex-column align-items-center">
-                  <div
-                    data-bs-dismiss="offcanvas"
-                    className="dash-item p-2 px-5 my-2"
-                    onClick={() => navigate("/")}
-                  >
-                    Active tickets
-                  </div>
-                  <div className="line "></div>
+                 
+                
 
                   <div
                     data-bs-dismiss="offcanvas"
@@ -134,7 +128,7 @@ function Navbar() {
                       navigate("/events");
                     }}
                   >
-                    Organize
+                    Organizer profile
                   </div>
                   <div className="line "></div>
 
@@ -143,7 +137,10 @@ function Navbar() {
                     className="dash-item p-2 px-5 my-2"
                     onClick={handleLogout}
                   >
-                    Logout
+                    Logout <i
+                    style={{ color: "rgb(228, 226, 226)"  }}
+                    className="mx-2 fa-solid fa-arrow-right-from-bracket"
+                  ></i>
                   </div>
                   <div className="line"></div>
                 </div>
