@@ -84,7 +84,7 @@ function Homepage() {
 
       <div className="row d-flex justify-content-center">
         <div className="col-10 col-md-4 hero-text text-center px-5">
-          <h1 className="fs-1 pt-3">TICKET ONCLICK</h1>
+          <h1 className="fs-1  pt-3">TICKET ONCLICK</h1>
           <p className="forget-about">
             Forget about missing an event, forget about your personal details
             security. Get yourself a ticket with very little hassle only at a
