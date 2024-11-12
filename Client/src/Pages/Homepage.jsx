@@ -7,6 +7,7 @@ import sportsPhoto from "../assets/wetransfer_3-jpg_2024-11-08_0922/valentin-kre
 import agriculturePhoto from "../assets/wetransfer_3-jpg_2024-11-08_0922/polina-kuzovkova-0OkidWKbO2Q-unsplash.jpg";
 import expoPhoto from "../assets/wetransfer_3-jpg_2024-11-08_0922/Unknown-6.jpg";
 import festivalsPhoto from "../assets/wetransfer_3-jpg_2024-11-08_0922/Your Complete Guide To The Best UK Festivals In 2019.jpg";
+import footerPhoto from "../assets/Screenshot from 2024-11-11 23-22-51.png";
 import "bootstrap/dist/css/bootstrap.css";
 
 import "./Home.css";
@@ -83,7 +84,7 @@ function Homepage() {
 
       <div className="row d-flex justify-content-center">
         <div className="col-10 col-md-4 hero-text text-center px-5">
-          <h1 className="fs-1 pt-3">TICKET ONCLICK</h1>
+          <h1 className="fs-1  pt-3">TICKET ONCLICK</h1>
           <p className="forget-about">
             Forget about missing an event, forget about your personal details
             security. Get yourself a ticket with very little hassle only at a
@@ -128,20 +129,100 @@ function Homepage() {
       </div>
       <div className="row">
         <div className="col">
-          <div className="container">
-            <div className="row">
-              <div className="col-3">
-                <h2>About</h2>
+          <div className="container-fluid">
+            <div className="row" id="about">
+              <div className="col-2 abou ">
+                <h2 className="about-heading text-center">ABOUT</h2>
               </div>
               <div className="col">
-                <div className="container-fluid">
-                  <div className="row">div.col</div>
+                <div className="container pt-5">
+                  <div className="row">
+                    <div className="col rounded p-5 shadow-sm our-part">
+                      <h5 className="">Our Story</h5>
+                      <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit. Rerum tenetur dolores, minus deserunt iure in
+                        atque sapiente consectetur, sed, doloremque odit non
+                        eum. Veniam impedit accusantium possimus inventore
+                        debitis aspernatur!
+                      </p>
+                      <h5 className="">Mission</h5>
+                      <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit. Rerum tenetur dolores, minus deserunt iure in
+                        atque sapiente consectetur, sed, doloremque odit non
+                        eum. Veniam impedit accusantium possimus inventore
+                        debitis aspernatur!
+                      </p>
+                      <h5 className="">Vision</h5>
+                      <p>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit. Rerum tenetur dolores, minus deserunt iure in
+                        atque sapiente consectetur, sed, doloremque odit non
+                        eum. Veniam impedit accusantium possimus inventore
+                        debitis aspernatur!
+                      </p>
+                    </div>
+                    <div className="col">
+                      {" "}
+                      <div className="container-fluid">
+                        <div className="row mb-3">
+                          <div className="col reviews-section ">
+                            <div className="d-flex align-items-center gap-2 justify-content-around p-3">
+                              <img
+                                className="img-fluid review-image"
+                                src="https://images.unsplash.com/photo-1611432579699-484f7990b127?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aGVhZHNob3R8ZW58MHx8MHx8fDA%3D"
+                                alt=""
+                              />
+                              <p>
+                                <i className=" quotes fa-solid fa-quote-left"></i>{" "}
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Adipisci alias at quam, iste
+                                obcaecati suscipit dolorem reiciendis veritatis
+                                eveniet fugit culpa dolor cum sequi ex sed
+                                officiis incidunt exercitationem! Eius.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col p-5 statistics">
+                            <div className="container-fluid">
+                              <div className="row gap-5">
+                                <div className="col static-numbers shadow text-center">
+                                  <h2>
+                                    300 <sup>+</sup>
+                                  </h2>
+                                  <p>Satisified Users</p>
+                                </div>
+                                <div className="col static-numbers shadow text-center">
+                                  {" "}
+                                  <h2>
+                                    50 <sup>+</sup>
+                                  </h2>
+                                  <p>Certified Organizers</p>
+                                </div>
+                                <div className="col static-numbers shadow text-center">
+                                  <h2>
+                                    10 <sup>+</sup>
+                                  </h2>
+                                  <p>Solid Partnerships</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+     
+
       {loading && (
         <div className="spinner-overlay">
           <div className="spinner-grow" role="status">

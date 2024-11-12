@@ -1,10 +1,14 @@
 .hero-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
   background: #918f8a;
   color: white;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
+  font-weight: 100;
 }
 .hero-text h1 {
+  font-family: "Russo One";
   position: relative;
   display: inline-block;
 }
@@ -25,15 +29,12 @@
 .forget-about {
   font-size: 24px;
 }
-.hero-text h1 {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
+
 .category-heading {
-  font-family: sans-serif;
+  font-family: "Russo One", sans-serif;
   position: relative;
   display: inline-block;
-  color: black;
-  font-size: 46px;
+  /* color: black; */
 }
 .category-heading::after {
   content: "";
@@ -88,21 +89,96 @@
   max-width: 300px;
 }
 
-
-
 .the-card:hover {
   transform: scale(1.05);
   opacity: 1;
   cursor: pointer;
 }
 .ticket {
+  font-family: "Russo One";
   margin-bottom: -24px;
   margin-top: -12px;
   color: beige;
-  font-weight: 700;
 }
 .onclick {
+  font-family: "Russo One";
   margin: -12px;
   color: #c2b19c;
-  font-weight: 700;
+}
+.quotes {
+  font-size: 100px;
+  color: black;
+}
+.review-image {
+  max-width: 220px;
+  border-radius: 18px;
+}
+.reviews-section {
+  border-radius: 12px;
+  background: rgb(221, 220, 220);
+}
+.reviews-section p {
+  font-family: "Roboto";
+  font-weight: 300;
+  font-size: 17px;
+  opacity: 0.8;
+}
+.static-numbers {
+  background: rgb(221, 220, 220);
+  border-radius: 12px;
+  padding: 10px;
+}
+.static-numbers h2 {
+  font-family: "Russo One";
+  /* font-weight: 600; */
+  font-size: 32px;
+}
+.static-numbers p {
+  opacity: 0.8;
+  font-family: "Roboto";
+  font-weight: 300;
+}
+.statistics {
+  border-radius: 12px;
+  background: rgb(240, 236, 236);
+}
+.our-part {
+  background: #d6d5d5;
+}
+.our-part h5 {
+  font-weight: 600;
+}
+.our-part p {
+  opacity: 0.8;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+}
+.about-heading {
+  font-family: "Russo One", sans-serif;
+  position: relative;
+  font-weight: 300;
+
+  /* color: black; */
+  /* font-size: 46px; */
+}
+.about-heading::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 10px;
+  right: 10px;
+  height: 4px;
+  background-color: black;
+}
+.abou {
+  background: rgb(250, 249, 249);
+}
+.footer-image-bg img {
+  width: 100%;
+  object-fit: cover;
+  max-height: 320px;
+}
+.footer-image-bg {
+  background: #2a1e11;
 }

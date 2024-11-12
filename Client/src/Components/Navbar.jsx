@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 // import sport1 "../assets/wetransfer_3-jpg_2024-11-08_0922/-4.jpg"
+
 import "./Navbar.css";
 
 function Navbar() {
   const [loading, setLoading] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); //  login status
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -25,10 +26,10 @@ function Navbar() {
     navigate("/");
   };
 
-  const handleCategoryClick = () => {
+  const handleCategoryClick = (route) => {
     navigate("/");
     setTimeout(() => {
-      const categoriesElement = document.getElementById("categories");
+      const categoriesElement = document.getElementById(route);
       if (categoriesElement) {
         categoriesElement.scrollIntoView({ behavior: "smooth" });
       }
@@ -62,10 +63,10 @@ function Navbar() {
             >
               EVENTS
             </li>
-            <li className="" onClick={handleCategoryClick}>
+            <li className="" onClick={() => handleCategoryClick("categories")}>
               CATEGORIES
             </li>
-            <li className="" onClick={handleCategoryClick}>
+            <li className="" onClick={() => handleCategoryClick("about")}>
               ABOUT US
             </li>
           </div>
@@ -107,41 +108,41 @@ function Navbar() {
                   ></button>
                 </div>
                 <div className="offcanvas-body sidebar d-flex flex-column align-items-center">
-                  <button
-                    data-bs-dismiss="offcanvas"
-                    className="btn"
-                    onClick={() => navigate("/")}
-                  >
-                    My tickets
-                  </button>
-                  <div className="line my-3"></div>
+                 
+                
 
-                  <button
+                  <div
                     data-bs-dismiss="offcanvas"
-                    className="btn"
-                    onClick={() => navigate("/events")}
+                    className="dash-item p-2 px-5 my-2"
+                    onClick={() => navigate("/profile")}
                   >
                     My profile
-                  </button>
-                  <div className="line my-3"></div>
+                  </div>
+                  <div className="line "></div>
 
-                  <button
+                  <div
                     data-bs-dismiss="offcanvas"
-                    className="btn"
-                    onClick={() => navigate("/events")}
+                    className="dash-item p-2 px-5 my-2"
+                    onClick={() => {
+                      setLoading(true);
+                      navigate("/events");
+                    }}
                   >
-                    My profile
-                  </button>
-                  <div className="line my-3"></div>
+                    Organizer profile
+                  </div>
+                  <div className="line "></div>
 
-                  <button
+                  <div
                     data-bs-dismiss="offcanvas"
-                    className="btn"
+                    className="dash-item p-2 px-5 my-2"
                     onClick={handleLogout}
                   >
-                    Logout
-                  </button>
-                  <div className="line my-3"></div>
+                    Logout <i
+                    style={{ color: "rgb(228, 226, 226)"  }}
+                    className="mx-2 fa-solid fa-arrow-right-from-bracket"
+                  ></i>
+                  </div>
+                  <div className="line"></div>
                 </div>
               </div>
               {location.pathname != "/login" && (
