@@ -21,6 +21,12 @@ function Buyingpage() {
     }
   ];
 
+  const handlePurchase = (ticketType) => {
+    // Implement your ticket purchasing logic here
+    alert(`You have selected ${ticketType}. Proceeding to checkout...`);
+    // Here you can add logic to redirect to a payment page or handle the purchase
+  };
+
   return (
     <div className="container-fluid py-2 buy-ticket">
       <div className="row">
@@ -33,14 +39,20 @@ function Buyingpage() {
                 <div className="line" style={{ background: "white" }}></div>
               </div>
 
-              <div style={{color:"rgb(211, 209, 209)"}} className="col d-flex flex-column justify-content-center cost">
+              <div style={{ color: "rgb(211, 209, 209)" }} className="col d-flex flex-column justify-content-center cost">
                 {ticketOptions.map((ticket, index) => (
                   <div key={index}>
                     <h6 className="text-uppercase">Advance Ticket Sales</h6>
                     <div className="ticket-option d-flex justify-content-between align-items-center my-3">
                       <h2 className="ticket-type">{ticket.type}</h2>
                       <h2 className="ticket-price ms-auto">{ticket.price}</h2>
-                      <button className="btn  mx-5"><i class="fa-solid fa-cart-shopping" style={{color:"white", fontSize:"32px"}}></i></button>
+                      <button
+                        className="btn mx-5"
+                        onClick={() => handlePurchase(ticket.type)}
+                        aria-label={`Purchase ${ticket.type}`}
+                      >
+                        <i className="fa-solid fa-cart-shopping" style={{ color: "white", fontSize: "32px" }}></i>
+                      </button>
                     </div>
                     <p className="ticket-description">{ticket.description}</p>
                     <div className="line"></div>
