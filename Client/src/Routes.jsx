@@ -1,12 +1,11 @@
-import Eventpage from "./Pages/Eventpage";
 import Homepage from "./Pages/Homepage";
 import App from "./App";
 import Loginpage from "./Pages/Loginpage";
 import Registerpage from "./Pages/Registerpage";
-import Ticketspage from "./Pages/Ticketspage";
 
 import UserProfilePage from "./Pages/Userpage";
-
+import EventsPage from "./Pages/EventsPage";
+import Buyingpage from "./Pages/Buyingpage";
 
 const PageRoutes = [
   {
@@ -18,7 +17,6 @@ const PageRoutes = [
         path: "/",
         element: <Homepage />,
       },
-      { path: "/events", element: <Eventpage /> },
       {
         path: "/login",
         element: <Loginpage />,
@@ -28,15 +26,17 @@ const PageRoutes = [
         element: <Registerpage />,
       },
       {
-        path: "/ticket",
-        element: <Ticketspage />,
+        path: "/events",
+        element: <EventsPage />,
       },
       {
-
-        path:"/profile",
-        element:<UserProfilePage/>
-      }
-
+        path: "/profile",
+        element: <UserProfilePage />,
+      },
+      {
+        path: "/buying",
+        element: <Buyingpage />,
+      },
     ],
   },
 ];
