@@ -6,8 +6,8 @@ import footerimage from '../assets/wetransfer_3-jpg_2024-11-08_0922/Screenshot 2
 
 function Footer() {
   return (
-    <footer className="footer py-4">
-       <img className="mb-5 img-fluid imgfooter" src={footerimage} alt="" />
+    <footer className="footer ">
+       <img className="mb-5  img-fluid imgfooter" src={footerimage} alt="" />
        <div className="container-fluid">
         <div className="row">
           <div className="col">

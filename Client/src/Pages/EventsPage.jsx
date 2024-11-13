@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import "./TicketPage.css"; // Import the custom CSS file
+import "./EventsPage.css"; // Import the custom CSS file
 import event from "../assets/wetransfer_3-jpg_2024-11-08_0922/event.jpg";
 import khabib from "../assets/wetransfer_3-jpg_2024-11-08_0922/Khabib vs McGregor.jpg";
 import football from "../assets/wetransfer_3-jpg_2024-11-08_0922/football.jpg";
+import { useNavigate } from "react-router-dom";
 
-function TicketPage() {
+function EventsPage() {
+  const navigate = useNavigate();
   return (
     <>
       {/* Original container */}
@@ -18,7 +20,10 @@ function TicketPage() {
                 </div>
               </div>
 
-              <div className="row d-flex justify-content-between align-items-center events-container p-2">
+              <div
+                onClick={() => navigate("/buying")}
+                className="row d-flex justify-content-between align-items-center events-container p-2"
+              >
                 <div className="col">
                   <img className="img-fluid event-img" src={football} alt="" />
                 </div>
@@ -32,7 +37,7 @@ function TicketPage() {
                   <p className="">Venue Location</p>
                 </div>
                 <div className="col">
-                  <div className="capacity">
+                  <div className="capacity p-2 rounded">
                     25 <i className="fa-solid fa-user-group"></i>
                   </div>
                 </div>
@@ -79,12 +84,8 @@ function TicketPage() {
           </div>
         </div>
       </div>
-
-     
-      
-      
     </>
   );
 }
 
-export default TicketPage;
+export default EventsPage;
