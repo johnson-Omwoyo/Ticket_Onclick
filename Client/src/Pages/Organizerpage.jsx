@@ -25,7 +25,7 @@ const EventForm = ({ onAddEvent }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form class="AddeventForm" onSubmit={handleSubmit}>
             <input
                 type="text"
                 value={title}
