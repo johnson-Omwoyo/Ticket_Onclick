@@ -6,7 +6,7 @@ import Registerpage from "./Pages/Registerpage";
 import UserProfilePage from "./Pages/Userpage";
 import EventsPage from "./Pages/EventsPage";
 import Buyingpage from "./Pages/Buyingpage";
-
+import OrganizerPage from "./Pages/Organizerpage";
 const PageRoutes = [
   {
     path: "/",
@@ -28,6 +28,10 @@ const PageRoutes = [
       {
         path: "/events",
         element: <EventsPage />,
+      },
+      { path: "/organizer",
+        element: <OrganizerPage />
+
       },
       {
         path: "/profile",
