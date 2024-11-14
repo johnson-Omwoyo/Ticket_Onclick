@@ -5,7 +5,7 @@ import Loginpage from "./Pages/Loginpage";
 import Registerpage from "./Pages/Registerpage";
 import Ticketspage from "./Pages/Ticketspage";
 import Buyingpage from "./Pages/Buyingpage";
-
+import OrganizerPage from "./Pages/Organizerpage";
 const PageRoutes = [
   {
     path: "/",
@@ -28,6 +28,10 @@ const PageRoutes = [
       {
         path: "/ticket",
         element: <Ticketspage />,
+      },
+      { path: "/organizer",
+        element: <OrganizerPage />
+
       },
       {
         path: "/buy",
