@@ -1,74 +1,48 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-}
-
 /* Container for the main content */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Header Styles */
-h1 {
-    text-align: center;
-    color: #333;
-}
-
-/* Form Styles */
-form {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
+.submit-event {
+  max-width: 320px;
 }
 
 input[type="text"],
-input[type="datetime-local"] {
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+input[type="datetime-local"],
+input[type="number"],
+select,
+textarea {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
-button {
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #218838;
+textarea {
+  resize: vertical;
 }
 
 /* Event List Styles */
-.event {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 15px;
-    margin: 10px 0;
-    background-color: #f9f9f9;
+.organizer-add {
+  background: #c2b19c;
+  min-height: 100vh;
+  padding: 2rem 0;
 }
 
-.event h2 {
-    margin: 0 0 10px;
-    color: #333;
+.card {
+  border-radius: 12px;
 }
 
-.event p {
-    margin: 5px 0;
-    color: #666;
+.card-body {
+  background: #ffffff;
+  border: dotted 1.5px #343f55;
+  border-radius: 12px;
 }
-.AddeventForm{
-    height: 100vh;
+
+.card-title {
+  font-family: "Roboto", sans-serif;
+  color: #343f55;
+  font-weight: 600;
 }
+
+.card-text {
+  color: #343f55;
+}
+

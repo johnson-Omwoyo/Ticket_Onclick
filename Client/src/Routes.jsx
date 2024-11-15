@@ -7,6 +7,8 @@ import UserProfilePage from "./Pages/Userpage";
 import EventsPage from "./Pages/EventsPage";
 import Buyingpage from "./Pages/Buyingpage";
 import OrganizerPage from "./Pages/Organizerpage";
+import ActiveEvent from "./Pages/ActiveEvent";
+import EventHistory from "./Pages/EventHistory";
 const PageRoutes = [
   {
     path: "/",
@@ -38,9 +40,17 @@ const PageRoutes = [
         element: <UserProfilePage />,
       },
       {
-        path: "/buying",
+        path: "/buying/:eventId",
         element: <Buyingpage />,
       },
+      {
+        path:'/organizer/active',
+        element: <ActiveEvent/>
+      },
+      {
+        path:'/organizer/history',
+        element:<EventHistory/>
+      }
     ],
   },
 ];
