@@ -151,3 +151,8 @@
     color: white;
     font-family: "Oswald", sans-serif;
   }
+  .eventcard{
+    min-height: 240px;
+    cursor:pointer
+  }
+  

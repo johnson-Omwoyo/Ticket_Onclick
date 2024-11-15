@@ -56,12 +56,12 @@ function Homepage() {
     },
   ];
   const handleCategoryClick = (name) => {
-    handleClick("/events");
-
-    console.log(name.toLowerCase());
+    navigate("/events");
     setTimeout(() => {
-      const categoriesElement = document.getElementById(name);
+      const categoriesElement = document.getElementById(name.toLowerCase());
       if (categoriesElement) {
+        console.log(name.toLowerCase());
+
         categoriesElement.scrollIntoView({ behavior: "smooth" });
       }
     }, 100);
@@ -221,7 +221,6 @@ function Homepage() {
           </div>
         </div>
       </div>
-     
 
       {loading && (
         <div className="spinner-overlay">

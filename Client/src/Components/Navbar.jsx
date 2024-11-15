@@ -6,7 +6,7 @@ import "./Navbar.css";
 
 function Navbar() {
   const [loading, setLoading] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -26,6 +26,14 @@ function Navbar() {
     navigate("/");
   };
 
+  const handleOrganizer = () => {
+    setLoading(true);
+    setTimeout(() => {
+      navigate("/organizer/active");
+      setLoading(false);
+    }, 2000);
+  };
+
   const handleCategoryClick = (route) => {
     navigate("/");
     setTimeout(() => {
@@ -42,142 +50,201 @@ function Navbar() {
       navigate(route);
     }, 2000);
   };
+  const path = location.pathname;
   return (
-    <nav className="navbar bg-light">
-      <div className="container-fluid rounded-lg navbar-ground p-4 mx-md-5 mt-md-3 d-flex justify-content-between align-items-center">
-        <div className="d-flex align-items-center">
-          <div className="logo me-5 " onClick={() => handleClick("/")}>
-            <h1 className="ticket">TICKET</h1>
-            <h1 className="onclick shadow">ONCLICK</h1>
-          </div>
-          <div className="page-name d-flex gap-5 mx-5 align-items-center">
-            <li
-              onClick={() => handleClick("/")}
-              className={location.pathname == "/" ? "active" : ""}
-            >
-              HOME
-            </li>
-            <li
-              onClick={() => handleClick("/events")}
-              className={location.pathname == "/events" ? "active" : ""}
-            >
-              EVENTS
-            </li>
-            <li className="" onClick={() => handleCategoryClick("categories")}>
-              CATEGORIES
-            </li>
-            <li className="" onClick={() => handleCategoryClick("about")}>
-              ABOUT US
-            </li>
-          </div>
-        </div>
-        <div className="buttons">
-          {isLoggedIn ? (
-            <div className=""></div>
-          ) : (
-            <>
-              <button
-                className="btn btn-secondary"
-                type="button"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasWithBothOptions"
-                aria-controls="offcanvasWithBothOptions"
-              >
-                <i className="fa-regular fa-user"></i>{" "}
-              </button>
-
-              <div
-                className="offcanvas offcanvas-end"
-                data-bs-scroll="true"
-                tabIndex="-1"
-                id="offcanvasWithBothOptions"
-                aria-labelledby="offcanvasWithBothOptionsLabel"
-              >
-                <div className="offcanvas-header sidebar-header">
-                  <h5
-                    className="offcanvas-title"
-                    id="offcanvasWithBothOptionsLabel"
-                  >
-                    Johnson Omwoyo
-                  </h5>
-                  <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="offcanvas"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div className="offcanvas-body sidebar d-flex flex-column align-items-center">
-                 
-                
-
-                  <div
-                    data-bs-dismiss="offcanvas"
-                    className="dash-item p-2 px-5 my-2"
-                    onClick={() => navigate("/profile")}
-                  >
-                    My profile
-                  </div>
-                  <div className="line "></div>
-
-                  <div
-                    data-bs-dismiss="offcanvas"
-                    className="dash-item p-2 px-5 my-2"
-                    onClick={() => {
-                      setLoading(true);
-                      navigate("/events");
-                    }}
-                  >
-                    Organizer profile
-                  </div>
-                  <div className="line "></div>
-
-                  <div
-                    data-bs-dismiss="offcanvas"
-                    className="dash-item p-2 px-5 my-2"
-                    onClick={handleLogout}
-                  >
-                    Logout <i
-                    style={{ color: "rgb(228, 226, 226)"  }}
-                    className="mx-2 fa-solid fa-arrow-right-from-bracket"
-                  ></i>
-                  </div>
-                  <div className="line"></div>
-                </div>
+    <>
+      {!location.pathname.includes("/organizer") ? (
+        <nav className="navbar bg-light">
+          <div className="container-fluid rounded-lg navbar-ground p-4 mx-md-5 mt-md-3 d-flex justify-content-between align-items-center">
+            <div className="d-flex align-items-center">
+              <div className="logo me-5 " onClick={() => handleClick("/")}>
+                <h1 className="ticket">TICKET</h1>
+                <h1 className="onclick shadow">ONCLICK</h1>
               </div>
-              {location.pathname != "/login" && (
-                <button
-                  className="btn btn-primary rounded-pill me-3 px-4"
-                  onClick={() => {
-                    handleClick("/login");
-                  }}
+              <div className="page-name d-flex gap-5 mx-5 align-items-center">
+                <li
+                  onClick={() => handleClick("/")}
+                  className={location.pathname == "/" ? "active" : ""}
                 >
-                  Login
-                </button>
-              )}
+                  HOME
+                </li>
+                <li
+                  onClick={() => handleClick("/events")}
+                  className={location.pathname == "/events" ? "active" : ""}
+                >
+                  EVENTS
+                </li>
+                <li
+                  className=""
+                  onClick={() => handleCategoryClick("categories")}
+                >
+                  CATEGORIES
+                </li>
+                <li className="" onClick={() => handleCategoryClick("about")}>
+                  ABOUT US
+                </li>
+              </div>
+            </div>
+            <div className="buttons">
+              {isLoggedIn ? (
+                <div className=""></div>
+              ) : (
+                <>
+                  <button
+                    className="btn btn-secondary"
+                    type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasWithBothOptions"
+                    aria-controls="offcanvasWithBothOptions"
+                  >
+                    <i className="fa-regular fa-user"></i>{" "}
+                  </button>
 
-              {location.pathname != "/register" && (
-                <button
-                  onClick={() => {
-                    handleClick("/register");
-                  }}
-                  className="btn rounded-pill px-3"
-                >
-                  Register
-                </button>
+                  <div
+                    className="offcanvas offcanvas-end"
+                    data-bs-scroll="true"
+                    tabIndex="-1"
+                    id="offcanvasWithBothOptions"
+                    aria-labelledby="offcanvasWithBothOptionsLabel"
+                  >
+                    <div className="offcanvas-header sidebar-header">
+                      <h5
+                        className="offcanvas-title"
+                        id="offcanvasWithBothOptionsLabel"
+                      >
+                        Johnson Omwoyo
+                      </h5>
+                      <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div className="offcanvas-body sidebar d-flex flex-column align-items-center">
+                      <div
+                        data-bs-dismiss="offcanvas"
+                        className="dash-item p-2 px-5 my-2"
+                        onClick={() => navigate("/profile")}
+                      >
+                        My profile
+                      </div>
+                      <div className="line "></div>
+
+                      <div
+                        data-bs-dismiss="offcanvas"
+                        className="dash-item p-2 px-5 my-2"
+                        onClick={() => {
+                          handleOrganizer();
+                        }}
+                      >
+                        Organizer Mode
+                      </div>
+                      <div className="line "></div>
+
+                      <div
+                        data-bs-dismiss="offcanvas"
+                        className="dash-item p-2 px-5 my-2"
+                        onClick={handleLogout}
+                      >
+                        Logout{" "}
+                        <i
+                          style={{ color: "rgb(228, 226, 226)" }}
+                          className="mx-2 fa-solid fa-arrow-right-from-bracket"
+                        ></i>
+                      </div>
+                      <div className="line"></div>
+                    </div>
+                  </div>
+                  {location.pathname != "/login" && (
+                    <button
+                      className="btn btn-primary rounded-pill me-3 px-4"
+                      onClick={() => {
+                        handleClick("/login");
+                      }}
+                    >
+                      Login
+                    </button>
+                  )}
+
+                  {location.pathname != "/register" && (
+                    <button
+                      onClick={() => {
+                        handleClick("/register");
+                      }}
+                      className="btn rounded-pill px-3"
+                    >
+                      Register
+                    </button>
+                  )}
+                </>
               )}
-            </>
+            </div>
+          </div>{" "}
+          {loading && (
+            <div className="spinner-overlay">
+              <div className="spinner-grow" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            </div>
           )}
-        </div>
-      </div>{" "}
-      {loading && (
-        <div className="spinner-overlay">
-          <div className="spinner-grow" role="status">
-            <span className="visually-hidden">Loading...</span>
+        </nav>
+      ) : (
+        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+          <div className="container-fluid organizer-bar">
+            <span className="navbar-brand logo me-5">Organizer Mode</span>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse ms-aut " id="navbarNav">
+              <ul className="navbar-nav gap-3">
+                <li
+                  onClick={() => navigate("/organizer")}
+                  className={
+                    path == "/organizer"
+                      ? "selected nav-item nav-link"
+                      : "nav-item nav-link"
+                  }
+                >
+                  Add event
+                </li>
+                <li
+                  onClick={() => navigate("/organizer/active")}
+                  className={
+                    path == "/organizer/active"
+                      ? "selected nav-item nav-link"
+                      : "nav-item nav-link"
+                  }
+                >
+                  Active event
+                </li>
+                <li
+                  onClick={() => navigate("/organizer/history")}
+                  className={
+                    path == "/organizer/history"
+                      ? "selected nav-item nav-link"
+                      : "nav-item nav-link"
+                  }
+                >
+                  Event History
+                </li>
+                <li onClick={() => navigate("/")} className="nav-item nav-link">
+                  Log Out
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        </nav>
       )}
-    </nav>
+    </>
   );
 }
 

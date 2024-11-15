@@ -86,3 +86,18 @@
   /* border: dotted 1px #f3f3f2; */
   background: #8a8888;
 }
+.organizer-bar li {
+  cursor: pointer;
+  color: #343f55;
+}
+.organizer-bar .selected {
+  color: #343f55;
+  font-weight: 600;
+  font-family: "Russo one";
+}
+
+.organizer-bar .logo {
+  color: #343f55;
+  font-size: 24px;
+  font-family: "Russo One";
+}
