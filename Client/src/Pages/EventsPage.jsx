@@ -55,16 +55,22 @@ function EventsPage() {
     },
   ]);
   useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/events");
-        setEvents(response.data);
-      } catch (error) {
-        console.error("Error fetching events", error);
-      }
+    const fetchCards = async () => {
+        try {
+            const response = await fetch('https://api.example.com/cards'); // Replace with your API endpoint
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            setCards(data); // Assuming data is an array of card objects
+        } catch (error) {
+            console.error('Error fetching card data:', error);
+        }
     };
-    fetchEvents();
-  }, []);
+
+    fetchCards();
+}, []);
+
   return (
     <div className="container-fluid ticket-page-container">
       {" "}

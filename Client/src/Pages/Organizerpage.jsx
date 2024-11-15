@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+
 import "./Organizerpage.css";
 
 const EventForm = ({ onAddEvent }) => {
@@ -14,23 +14,35 @@ const EventForm = ({ onAddEvent }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(null);
+    setError(null); // Reset any previous error
+
+    const eventData = {
+      title,
+      description,
+      date,
+      location,
+      cost,
+      capacity,
+      category,
+    };
 
     try {
-      const eventData = {
-        title,
-        description,
-        date,
-        location,
-        cost,
-        capacity,
-        category,
-      };
-      const response = await axios.post(
-        "http://localhost:5000/events",
-        eventData
-      );
-      onAddEvent(response.data);
+      const response = await fetch("http://localhost:5000/events", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(eventData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      onAddEvent(data); // Call the callback function to update the event list
+
+      // Reset form fields
       setTitle("");
       setDescription("");
       setDate("");
@@ -40,6 +52,7 @@ const EventForm = ({ onAddEvent }) => {
       setCategory("");
     } catch (err) {
       console.error("Error adding event", err);
+      // Set a user-friendly error message
       setError("Failed to add event. Please try again.");
     }
   };
@@ -123,12 +136,18 @@ const OrganizerPage = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/events");
-        setEvents(response.data);
+        const response = await fetch("http://localhost:5000/events");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setEvents(data);
       } catch (err) {
         console.error("Error fetching events", err);
+        // setError("Failed to fetch events. Please try again.");
       }
     };
+
     fetchEvents();
   }, []);
 
@@ -141,7 +160,7 @@ const OrganizerPage = () => {
       <div className="container">
         <h1 className="text-center mt-3">Add Events</h1>
         <EventForm onAddEvent={handleAddEvent} />
-        
+
         <div className="row">
           {events.map((event) => (
             <div key={event.id} className="col-md-4 mb-4">
@@ -150,7 +169,9 @@ const OrganizerPage = () => {
                   <h5 className="card-title">{event.title}</h5>
                   <p className="card-text">{event.description}</p>
                   <p className="card-text">
-                    <small className="text-muted">{new Date(event.date).toLocaleString()}</small>
+                    <small className="text-muted">
+                      {new Date(event.date).toLocaleString()}
+                    </small>
                   </p>
                   <p className="card-text">Location: {event.location}</p>
                   <p className="card-text">Cost: ${event.cost}</p>

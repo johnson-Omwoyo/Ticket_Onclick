@@ -27,10 +27,10 @@ function Footer() {
                         accessibility arrangements, please reach out to us at:
                       </p>
                       <p>
-                        <i class="me-3 fa-solid fa-mobile"></i>+254 7123456
+                        <i className="me-3 fa-solid fa-mobile"></i>+254 7123456
                       </p>
                       <p>
-                        <i class="me-3 fa-solid fa-envelope"></i>
+                        <i className="me-3 fa-solid fa-envelope"></i>
                         HELLO@TICKETONCLICK.COM
                       </p>
                     </div>
@@ -42,15 +42,15 @@ function Footer() {
                       <h5>Follow Us</h5>
                       <div className="d-flex flex-column social-icons">
                         <a href="https://facebook.com" className="footer-icon">
-                          <i class="mx-2 fa-brands fa-facebook"></i>
+                          <i className="mx-2 fa-brands fa-facebook"></i>
                           @ticketonclick_fb
                         </a>
                         <a href="https://twitter.com" className="footer-icon">
-                          <i class="mx-2 fa-brands fa-x-twitter"></i>
+                          <i className="mx-2 fa-brands fa-x-twitter"></i>
                           @ticketonclick_x
                         </a>
                         <a href="https://instagram.com" className="footer-icon">
-                          <i class="mx-2 fa-brands fa-instagram"></i>
+                          <i className="mx-2 fa-brands fa-instagram"></i>
                           @ticketonclick_ig
                         </a>
                       </div>
