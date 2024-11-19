@@ -30,7 +30,7 @@ const RegisterPage = () => {
     console.log("Registering user:", values);
 
     // Send the form data to the backend
-    fetch("http://127.0.0.1:5000/user/register", {
+    fetch("https://ticket-onclick.onrender.com/user/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

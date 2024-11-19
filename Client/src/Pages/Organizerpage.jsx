@@ -37,7 +37,7 @@ const EventForm = ({ onAddEvent }) => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/event", {
+      const response = await fetch("https://ticket-onclick.onrender.com/event", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -147,7 +147,7 @@ const OrganizerPage = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("http://localhost:5000/events");
+        const response = await fetch("https://ticket-onclick.onrender.com/events");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

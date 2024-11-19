@@ -23,7 +23,7 @@ function UserProfilePage() {
     // Simulate fetching data from an API
     const fetchEvents = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:5000/ticket", {
+        const response = await fetch("https://ticket-onclick.onrender.com/ticket", {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         });

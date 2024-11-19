@@ -10,10 +10,13 @@ function ActiveEvent() {
     // Simulate fetching data from an API
     const fetchEvents = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:5000/event", {
-          method: "GET",
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const response = await fetch(
+          "https://ticket-onclick.onrender.com/event",
+          {
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         if (!response.ok) {
           throw new Error("some issues occured reload");
         }
