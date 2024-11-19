@@ -4,17 +4,13 @@ from .resources import event_resource, user_resource, payment_resource, ticket_r
 from flask_migrate import Migrate
 from flask_cors import CORS
 from .models import db
-from .config import Config
 from dotenv import load_dotenv
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS
-import os
 
 load_dotenv()
 
-
 def create_app():
-
     app = Flask(__name__)
 
     app.config["SQLALCHEMY_DATABASE_URI"] = (
@@ -34,8 +30,5 @@ def create_app():
 
     db.init_app(app)
     migrate = Migrate(app, db)
-    if __name__ == "__main__":
-        app.run()
 
-
-create_app()
+    return app

@@ -17,7 +17,7 @@ bcrypt = "*"
 cors = "*"
 python-dotenv = "*"
 gunicorn = "*"
-pyjwt = "<2.0"
+pyjwt = "*"
 
 [dev-packages]
 
