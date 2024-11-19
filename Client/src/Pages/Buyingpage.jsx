@@ -25,7 +25,7 @@ function Buyingpage() {
       selectedTicket.event_id = eventData.id;
       selectedTicket.user_id = userData.id;
 
-      const response = await fetch("http://127.0.0.1:5000/ticket", {
+      const response = await fetch("https://ticket-onclick.onrender.com/ticket", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -39,7 +39,7 @@ function Buyingpage() {
       }
 
       const eventResponse = await fetch(
-        `http://127.0.0.1:5000/event/${eventData.id}`,
+        `https://ticket-onclick.onrender.com/event/${eventData.id}`,
         {
           method: "PATCH",
           headers: {
