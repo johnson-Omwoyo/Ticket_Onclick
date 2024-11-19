@@ -31,7 +31,17 @@ class Event(db.Model, SerializerMixin):
     )
 
     # serialize_rules = ("-organized_events", "-payments.event", "-tickets.event")
-    serialize_only = ("name", "date","time","description","capacity","id")
+    serialize_only = (
+        "name",
+        "date",
+        "time",
+        "description",
+        "capacity",
+        "id",
+        "category",
+        "cost",
+        "location",
+    )
 
 
 class User(db.Model, SerializerMixin):
@@ -62,13 +72,22 @@ class Ticket(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey("events.id"), nullable=False)
+    cost = db.Column(db.Integer)
+    type = db.Column(db.String)
 
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     updated_at = db.Column(
         db.DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow
     )
 
-    serialize_rules = ("-user", "-event")
+    serialize_only = (
+        "event.time",
+        "event.name",
+        "event.date",
+        "cost",
+        "type",
+        "event.location",
+    )
 
 
 class Payment(db.Model, SerializerMixin):

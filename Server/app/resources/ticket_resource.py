@@ -1,5 +1,7 @@
 from flask import Blueprint
 from flask_restful import Api, reqparse, Resource
+from flask_jwt_extended import jwt_required, get_jwt_identity
+
 from ..models import Ticket, db
 
 bp = Blueprint("ticket", __name__)
@@ -7,25 +9,41 @@ api = Api(bp)
 
 
 class TicketResource(Resource):
-    fields = ["user_id", "event_id"]
+    fields = ["user_id", "event_id", "type", "cost"]
 
     def post(self):
         parser = reqparse.RequestParser()
         for field in TicketResource.fields:
-            parser.add_argument(field, required=True, help=f"{field} cannot be empty")
+            parser.add_argument(field, help=f"{field} cannot be empty")
         data = parser.parse_args()
 
-        new_ticket = Ticket(user_id=data.get("user_id"), event_id=data.get("event_id"))
+        new_ticket = Ticket(
+            user_id=data.get("user_id"),
+            event_id=data.get("event_id"),
+            type=data["type"],
+            cost=data["cost"],
+        )
 
         db.session.add(new_ticket)
         db.session.commit()
         return {"message": "Ticket added successfully"}, 201
+    
+    @jwt_required()
+    def get(self):
+        current_user_id = int(get_jwt_identity())
 
-    def get(self, ticket_id=None):
-        if ticket_id:
-            ticket = Ticket.query.get_or_404(ticket_id)
-            return ticket.to_dict()
-        return [ticket.to_dict() for ticket in Ticket.query.all()], 200
+        tickets = Ticket.query.filter_by(user_id=current_user_id).all()
+
+        if not tickets:
+            return {"message": "No tickets found for the current user."}, 404
+
+        return [ticket.to_dict() for ticket in tickets], 200
+
+    # def get(self, ticket_id=None):
+    #     if ticket_id:
+    #         ticket = Ticket.query.get_or_404(ticket_id)
+    #         return ticket.to_dict()
+    #     return [ticket.to_dict() for ticket in Ticket.query.all()], 200
 
     def patch(self, ticket_id):
         if ticket_id:

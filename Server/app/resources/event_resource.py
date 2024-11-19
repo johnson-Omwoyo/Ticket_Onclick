@@ -57,8 +57,10 @@ class EventResource(Resource):
     def patch(self, event_id):
         event = Event.query.get_or_404(event_id)
         parser = reqparse.RequestParser()
+
         for field in EventResource.fields:
             parser.add_argument(field, required=False, help=f"{field} is missing")
+
         data = parser.parse_args()
 
         for field in EventResource.fields:
@@ -75,6 +77,7 @@ class EventResource(Resource):
                     setattr(event, field, data[field])
 
         db.session.commit()
+
         return {"message": "Update successful"}, 200
 
     def delete(self, event_id):
@@ -84,7 +87,14 @@ class EventResource(Resource):
         return {"message": "Event deleted successfully"}, 200
 
 
+class AllEvents(Resource):
+    def get(self):
+        events = Event.query.all()
+        return [event.to_dict() for event in events], 200
+
+
 api.add_resource(EventResource, "/event", "/event/<int:event_id>")
+api.add_resource(AllEvents, "/event/all")
 
 
 """{ "name": "Tech Conference 2044", 

@@ -23,7 +23,7 @@ const EventForm = ({ onAddEvent }) => {
 
     const date = dater.split("T")[0];
     const time = dater.split("T")[1];
-   
+
     const eventData = {
       name,
       description,
@@ -74,7 +74,7 @@ const EventForm = ({ onAddEvent }) => {
         className="form-control"
         type="text"
         value={name}
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e) => setName(e.target.value.toUpperCase())}
         placeholder="Event Title"
         required
       />

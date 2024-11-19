@@ -77,7 +77,7 @@ function Homepage() {
     },
     {
       image: festivalsPhoto,
-      name: "FESTIVALS",
+      name: "FESTIVAL",
       description: "PEOPLE AND MUSIC",
     },
     {
