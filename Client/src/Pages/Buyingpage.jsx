@@ -1,21 +1,66 @@
 import React, { useState } from "react";
 import sports from "../assets/wetransfer_3-jpg_2024-11-08_0922/Sports Ticket Invitation Template in Pages, Illustrator, PSD, Publisher, Word, Outlook - Download � Template_net.jpg";
 import "./Buying.css";
-import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Buyingpage() {
   const eventData = useLocation().state?.event;
   const [pay, setPay] = useState(false);
   const [selectedTicket, setSelectedTicket] = useState(null);
-
+  const userData = useSelector((state) => state.data.data);
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
   const handleOpen = (ticket) => {
-    setSelectedTicket(ticket);
-    setPay(true);
+    if (token) {
+      setSelectedTicket(ticket);
+      setPay(true);
+    } else {
+      navigate("/login");
+    }
   };
   const handleClose = () => setPay(false);
-  const handleSave = () => {
-    console.log("Ticket purchased:", selectedTicket);
-    setPay(false);
+  const handleSave = async () => {
+    try {
+      selectedTicket.event_id = eventData.id;
+      selectedTicket.user_id = userData.id;
+
+      const response = await fetch("http://127.0.0.1:5000/ticket", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(selectedTicket),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+
+      const eventResponse = await fetch(
+        `http://127.0.0.1:5000/event/${eventData.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ capacity: eventData.capacity - 1 }),
+        }
+      );
+
+      const data = await response.json();
+
+      // console.log("Ticket purchased:", data);
+
+      setPay(false);
+
+      alert("Ticket purchased successfully!");
+      navigate("/events");
+    } catch (error) {
+      console.error("Error purchasing ticket:", error);
+      alert("There was an issue with your ticket purchase. Please try again.");
+    }
   };
 
   if (!eventData) return <p>No event data available.</p>;
@@ -23,17 +68,17 @@ function Buyingpage() {
   const ticketOptions = [
     {
       type: "Early-Bird Tickets",
-      price: eventData.cost,
+      cost: eventData.cost,
       description: "Inclusive of booking fee and local taxes.",
     },
     {
       type: "VIP Tickets",
-      price: eventData.cost + 20,
+      cost: eventData.cost + 20,
       description: "Get the best seats in the house with VIP tickets.",
     },
     {
       type: "Gate Tickets",
-      price: eventData.cost + 5,
+      cost: eventData.cost + 5,
       description: "Come one come all and enjoy the show.",
     },
   ];
@@ -50,7 +95,7 @@ function Buyingpage() {
                   src={sports}
                   alt="Ticket Image"
                 />
-                <h1>{eventData.title}</h1>
+                <h1>{eventData.name}</h1>
                 <div className="line" style={{ background: "white" }}></div>
               </div>
 
@@ -63,7 +108,7 @@ function Buyingpage() {
                     <h6 className="text-uppercase">Advance Ticket Sales</h6>
                     <div className="ticket-option d-flex justify-content-between align-items-center my-3">
                       <h2 className="ticket-type">{ticket.type}</h2>
-                      <h2 className="ticket-price ms-auto">${ticket.price}</h2>
+                      <h2 className="ticket-price ms-auto">${ticket.cost}</h2>
                       <button
                         className="btn btn-primary mx-5"
                         onClick={() => handleOpen(ticket)}
@@ -91,10 +136,10 @@ function Buyingpage() {
           <h2>Confirm Details and Purchase</h2>
           {selectedTicket && (
             <>
-              <p>Event name: {eventData.title}</p>
+              <p>Event name: {eventData.name}</p>
               <p>Ticket type: {selectedTicket.type}</p>
-              <p>Price: ${selectedTicket.price}</p>
-              <p>Description: {selectedTicket.description}</p>
+              <p>Cost: ${selectedTicket.cost}</p>
+              {/* <p>Description: {selectedTicket.description}</p> */}
               <p>Are you sure you want to purchase this ticket?</p>
             </>
           )}

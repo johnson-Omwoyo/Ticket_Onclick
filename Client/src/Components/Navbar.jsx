@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { persistor, store } from "../store";
 // import sport1 "../assets/wetransfer_3-jpg_2024-11-08_0922/-4.jpg"
 
 import "./Navbar.css";
+import { useSelector } from "react-redux";
 
 function Navbar() {
   const [loading, setLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const dat = useSelector((state) => state.data.data);
+  let userDetails = dat && dat ? dat : null;
 
   const navigate = useNavigate();
   const location = useLocation();
 
+  const token = localStorage.getItem("token");
   useEffect(() => {
-    const userToken = localStorage.getItem("userToken");
-    if (userToken) {
+    if (token) {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
@@ -21,17 +25,70 @@ function Navbar() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("userToken");
-    setIsLoggedIn(false);
-    navigate("/");
+    store.dispatch({ type: "CLEAR_DATA" });
+    persistor.purge();
+    persistor.flush().then(() => {
+      setLoading(true);
+      localStorage.removeItem("token");
+      localStorage.removeItem("persist:root");
+      localStorage.removeItem("reduxState");
+      setIsLoggedIn(false);
+      setTimeout(() => {
+        navigate("/");
+        setLoading(false);
+      }, 2000);
+    });
   };
-
   const handleOrganizer = () => {
-    setLoading(true);
-    setTimeout(() => {
-      navigate("/organizer/active");
-      setLoading(false);
-    }, 2000);
+    if (userDetails.organizer) {
+      setLoading(true);
+      setTimeout(() => {
+        navigate("/organizer/active");
+        setLoading(false);
+      }, 2000);
+    } else {
+      const userConfirmed = confirm(
+        "Would you like to join Ticket as an organizer?"
+      );
+      if (userConfirmed) {
+        alert("You are an organizer!");
+
+        const updateUserStatus = async () => {
+          try {
+            const response = await fetch(
+              `http://127.0.0.1:5000/user/${userDetails.id}`,
+              {
+                method: "PATCH",
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ organizer: "true" }), // Send as string "true"
+              }
+            );
+
+            if (response.ok) {
+              const data = await response.json();
+              alert("You are now an organizer!");
+              navigate("/organizer/active");
+            } else {
+              const data = await response.json();
+              alert(
+                data.message ||
+                  "Failed to become an organizer. Please try again."
+              );
+            }
+          } catch (error) {
+            console.error("Error updating user:", error);
+            alert("An error occurred. Please try again later.");
+          }
+        };
+
+        updateUserStatus();
+      } else {
+        alert("You chose not to join as an organizer.");
+      }
+    }
   };
 
   const handleCategoryClick = (route) => {
@@ -87,9 +144,7 @@ function Navbar() {
             </div>
             <div className="buttons">
               {isLoggedIn ? (
-                <div className=""></div>
-              ) : (
-                <>
+                <div className="">
                   <button
                     className="btn btn-secondary"
                     type="button"
@@ -156,6 +211,9 @@ function Navbar() {
                       <div className="line"></div>
                     </div>
                   </div>
+                </div>
+              ) : (
+                <>
                   {location.pathname != "/login" && (
                     <button
                       className="btn btn-primary rounded-pill me-3 px-4"

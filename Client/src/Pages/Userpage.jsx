@@ -1,45 +1,70 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import avatar from "../assets/wetransfer_3-jpg_2024-11-08_0922/Screenshot from 2024-11-12 12-04-09.png";
 import "./User.css"; // Fixed the import path by removing the space
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { persistor } from "../store";
 
 function UserProfilePage() {
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  const [userDetails, setUserDetails] = useState({
-    name: "Johnson Omwoyo",
-    email: "johnson@gmail.com",
-    phone: "+254 78263827",
-  });
+  const userdata = useSelector((state) => state.data.data);
+  const [activeTickets, setActiveTickets] = useState([]);
+  const token = localStorage.getItem("token");
+
+  const [userDetails, setUserDetails] = useState(userdata);
 
   const [formData, setFormData] = useState({ ...userDetails });
   const [formErrors, setFormErrors] = useState({});
   const [activeSection, setActiveSection] = useState("profile"); // Default to profile details
 
-  const activeTickets = [
-    {
-      id: 1,
-      eventName: "Tech Conference 2024",
-      eventDate: "15th Jan 2024",
-      venue: "Tech Hall, San Francisco",
-      ticketLink: "#", // Link to view/download ticket
-    },
-    {
-      id: 2,
-      eventName: "Music Festival 2024",
-      eventDate: "20th Feb 2024",
-      venue: "Festival Grounds, LA",
-      ticketLink: "#", // Link to view/download ticket
-    },
-    {
-      id: 3,
-      eventName: "Art Expo 2024",
-      eventDate: "10th Mar 2024",
-      venue: "Art Gallery, New York",
-      ticketLink: "#", // Link to view/download ticket
-    },
-  ];
+  useEffect(() => {
+    // Simulate fetching data from an API
+    const fetchEvents = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:5000/ticket", {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (!response.ok) {
+          throw new Error("some issues occured reload");
+        }
+        const data = await response.json();
+        setActiveTickets(data);
+
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchEvents();
+  }, []);
+  console.log(activeTickets);
+
+  // const activeTickets = [
+  //   {
+  //     id: 1,
+  //     eventName: "Tech Conference 2024",
+  //     eventDate: "15th Jan 2024",
+  //     venue: "Tech Hall, San Francisco",
+  //     ticketLink: "#", // Link to view/download ticket
+  //   },
+  //   {
+  //     id: 2,
+  //     eventName: "Music Festival 2024",
+  //     eventDate: "20th Feb 2024",
+  //     venue: "Festival Grounds, LA",
+  //     ticketLink: "#", // Link to view/download ticket
+  //   },
+  //   {
+  //     id: 3,
+  //     eventName: "Art Expo 2024",
+  //     eventDate: "10th Mar 2024",
+  //     venue: "Art Gallery, New York",
+  //     ticketLink: "#", // Link to view/download ticket
+  //   },
+  // ];
 
   const handleEditProfile = () => {
     setFormData({ ...userDetails }); // Reset form data to current user details
@@ -83,9 +108,12 @@ function UserProfilePage() {
 
   const handleLogout = () => {
     setLoading(true);
+    persistor.purge();
+    localStorage.removeItem("details");
     setTimeout(() => {
+      navigate("/");
       setLoading(false);
-      console.log("User  Logged Out");
+      window.location.reload();
     }, 2000);
   };
 
@@ -93,17 +121,18 @@ function UserProfilePage() {
   const ActiveTickets = () => (
     <div className="container-fluid">
       <div className="row gap-3 profiled-tickets">
-        {activeTickets.map((ticket) => (
-          <div key={ticket.id} className="card col p-4">
-            <h5 style={{ fontFamily: "Russo One" }}>{ticket.eventName}</h5>
+        {activeTickets.map((ticket, key) => (
+          <div key={key} className="card col p-4">
+            <h5 style={{ fontFamily: "Russo One" }}>{ticket.event.name}</h5>
             <p>
               <i className="fa-solid fa-calendar-days me-2"></i>
-              {ticket.eventDate}
-              <i className="fa-solid fa-stopwatch mx-2"></i>Time
+              {ticket.event.date}
+              <i className="fa-solid fa-stopwatch mx-2"></i>
+              {ticket.event.time}
             </p>
             <p>
               <i className="fa-solid fa-location-dot me-2"></i>
-              {ticket.venue}
+              {ticket.event.location}
             </p>
             <p className="view-event" onClick={() => navigate("/events")}>
               View Event
@@ -182,7 +211,7 @@ function UserProfilePage() {
                             />
                             <div>
                               <span className="owner rounded">Owner</span>
-                              <p className="mb-0 mt-2">Johnson Omwoyo</p>
+                              <p className="mb-0 mt-2">{userDetails.name}</p>
                             </div>
                           </div>
                           <div className="row">

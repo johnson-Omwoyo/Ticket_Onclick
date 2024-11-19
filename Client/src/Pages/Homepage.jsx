@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import topImage from "../assets/ticket design.jpg";
 import technologyPhoto from "../assets/wetransfer_3-jpg_2024-11-08_0922/VirtuClear™ Linseneinsätze für die Oculus Quest 2.jpg";
 import culturePhoto from "../assets/wetransfer_3-jpg_2024-11-08_0922/Black Magic - Issuu.jpg";
@@ -15,6 +17,35 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 function Homepage() {
   const [loading, setLoading] = useState(false);
+  const token = localStorage.getItem("token");
+
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.data);
+
+  if (!token) {
+  } else {
+    useEffect(() => {
+      const getUser = async () => {
+        try {
+          const response = await fetch("http://127.0.0.1:5000/user", {
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          if (!response.ok) {
+            throw new Error("some issues occured reload");
+          }
+          const data = await response.json();
+          dispatch({ type: "SET_DATA", payload: "" });
+          dispatch({ type: "SET_DATA", payload: data });
+          console.log(data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      getUser();
+    }, [dispatch]);
+  }
+  console.log(data);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -46,7 +77,7 @@ function Homepage() {
     },
     {
       image: festivalsPhoto,
-      name: "FESTIVALS",
+      name: "FESTIVAL",
       description: "PEOPLE AND MUSIC",
     },
     {
