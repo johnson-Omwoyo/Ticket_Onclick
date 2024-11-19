@@ -20,7 +20,7 @@ def create_app():
     app.config["SQLALCHEMY_DATABASE_URI"] = (
         "postgresql://ticket_onclick_user:MUHeicTFp5mQYJ2qcFkwjE11qPIidwEK@dpg-cste9dtds78s73ci56fg-a.oregon-postgres.render.com/ticket_onclick"
     )
-    app.config["JWT_SECRET_KEY"] = "fgh9876sdfghoiuytsdfgvoiutyrfg"
+    app.config["JWT_SECRET_KEY"import jwt] = "fgh9876sdfghoiuytsdfgvoiutyrfg"
     app.config["SECRET_KEY"] = "tfyv76fyyu6r7fty8f6tv7ftuv78gyuh"
 
     CORS(app)
