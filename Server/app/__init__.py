@@ -34,4 +34,8 @@ def create_app():
 
     db.init_app(app)
     migrate = Migrate(app, db)
-    return app
+    if __name__ == "__main__":
+        app.run()
+
+
+create_app()
