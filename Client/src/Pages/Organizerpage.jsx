@@ -1,35 +1,46 @@
 import React, { useState, useEffect } from "react";
 
 import "./Organizerpage.css";
+import { useSelector } from "react-redux";
 
 const EventForm = ({ onAddEvent }) => {
-  const [title, setTitle] = useState("");
+  const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [date, setDate] = useState("");
+  const [dater, setDater] = useState("");
   const [location, setLocation] = useState("");
   const [cost, setCost] = useState("");
   const [capacity, setCapacity] = useState("");
   const [category, setCategory] = useState("");
   const [error, setError] = useState(null);
+  const organizerData = useSelector((state) => state.data.data);
+  const token = localStorage.getItem("token");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null); // Reset any previous error
+    const organizer_id = organizerData.id;
+    console.log(organizer_id);
 
+    const date = dater.split("T")[0];
+    const time = dater.split("T")[1];
+   
     const eventData = {
-      title,
+      name,
       description,
       date,
       location,
       cost,
       capacity,
       category,
+      organizer_id,
+      time,
     };
 
     try {
-      const response = await fetch("http://localhost:5000/events", {
+      const response = await fetch("http://localhost:5000/event", {
         method: "POST",
         headers: {
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(eventData),
@@ -43,9 +54,9 @@ const EventForm = ({ onAddEvent }) => {
       onAddEvent(data); // Call the callback function to update the event list
 
       // Reset form fields
-      setTitle("");
+      setName("");
       setDescription("");
-      setDate("");
+      setDater("");
       setLocation("");
       setCost("");
       setCapacity("");
@@ -62,16 +73,16 @@ const EventForm = ({ onAddEvent }) => {
       <input
         className="form-control"
         type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
         placeholder="Event Title"
         required
       />
       <input
         className="form-control"
         type="datetime-local"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
+        value={dater}
+        onChange={(e) => setDater(e.target.value)}
         required
       />
       <input
@@ -160,28 +171,6 @@ const OrganizerPage = () => {
       <div className="container">
         <h1 className="text-center mt-3">Add Events</h1>
         <EventForm onAddEvent={handleAddEvent} />
-
-        <div className="row">
-          {events.map((event) => (
-            <div key={event.id} className="col-md-4 mb-4">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">{event.title}</h5>
-                  <p className="card-text">{event.description}</p>
-                  <p className="card-text">
-                    <small className="text-muted">
-                      {new Date(event.date).toLocaleString()}
-                    </small>
-                  </p>
-                  <p className="card-text">Location: {event.location}</p>
-                  <p className="card-text">Cost: ${event.cost}</p>
-                  <p className="card-text">Capacity: {event.capacity}</p>
-                  <p className="card-text">Category: {event.category}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );

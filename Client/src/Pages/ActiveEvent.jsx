@@ -4,32 +4,30 @@ import "./ActiveEvent.css";
 
 function ActiveEvent() {
   const [events, setEvents] = useState([]);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     // Simulate fetching data from an API
     const fetchEvents = async () => {
-      const sampleEvents = [
-        {
-          id: 1,
-          title: "Tech Conference 2024",
-          description: "A tech conference for industry professionals.",
-          date: "2024-11-08T14:00:00Z",
-          location: "Convention Center, Nairobi",
-        },
-        {
-          id: 2,
-          title: "Music Festival",
-          description: "A day-long festival with multiple bands.",
-          date: "2024-12-01T09:00:00Z",
-          location: "City Park, Nairobi",
-        },
-        // Add more sample events as needed
-      ];
-      setEvents(sampleEvents);
-    };
+      try {
+        const response = await fetch("http://127.0.0.1:5000/event", {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (!response.ok) {
+          throw new Error("some issues occured reload");
+        }
+        const data = await response.json();
+        setEvents(data);
 
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
     fetchEvents();
   }, []);
+  console.log(events);
 
   return (
     <div className="profile-container p-4">
@@ -37,14 +35,16 @@ function ActiveEvent() {
       <hr className="my-4" />
       <div className="row">
         {events.map((event) => (
-          <div key={event.id} className="col-md-6 mb-4">
+          <div key={event.id} className="col-md-4 mb-4">
             <div className="card naming-containers">
               <div className="card-body">
-                <h2 className="card-title">{event.title}</h2>
+                <h2 className="card-title">{event.name}</h2>
                 <p className="card-text">{event.description}</p>
+
                 <p className="card-text">
-                  {new Date(event.date).toLocaleString()}
+                  {event.date}, {event.time}
                 </p>
+                <p className="card-text">Remaining Tickets:{event.capacity}</p>
                 <p className="card-text">{event.location}</p>
                 <div className="d-flex justify-content-between">
                   <button className="btn btn-outline-primary edit">

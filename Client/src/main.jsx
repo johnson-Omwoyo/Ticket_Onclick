@@ -1,7 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+
 import PageRoutes from "./Routes.jsx";
+import { store, persistor } from "./store";
 
 const rout = createBrowserRouter(PageRoutes, {
   future: {
@@ -15,5 +19,9 @@ const rout = createBrowserRouter(PageRoutes, {
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={rout}></RouterProvider>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <RouterProvider router={rout} />
+    </PersistGate>
+  </Provider>
 );

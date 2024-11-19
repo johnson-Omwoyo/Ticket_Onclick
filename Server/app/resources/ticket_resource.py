@@ -51,3 +51,8 @@ class TicketResource(Resource):
 
 
 api.add_resource(TicketResource, "/ticket", "/ticket/<int:ticket_id>")
+
+"""{
+  "user_id":"1",
+  "event_id":"2"
+}"""

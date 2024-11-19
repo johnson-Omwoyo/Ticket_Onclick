@@ -2,7 +2,7 @@ from flask import Blueprint
 from flask_restful import Api, reqparse, Resource
 from ..models import Payment, db
 
-bp = Blueprint("payment", _name_)
+bp = Blueprint("payment", __name__)
 api = Api(bp)
 
 
@@ -32,3 +32,5 @@ class PaymentResource(Resource):
             payment = Payment.query.get_or_404(payment_id)
             return payment.to_dict()
         return [payment.to_dict() for payment in Payment.query.all()], 200
+    
+api.add_resource(PaymentResource,"/payment")

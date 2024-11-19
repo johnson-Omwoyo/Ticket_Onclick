@@ -13,9 +13,11 @@ class Event(db.Model, SerializerMixin):
     category = db.Column(db.String(50), nullable=False)
     organizer_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     location = db.Column(db.String(100), nullable=False)
-    time = db.Column(db.Time, nullable=False)
-    date = db.Column(db.Date, nullable=False)
-    capacity = db.Column(db.Integer, nullable=False)
+    time = db.Column(db.String, nullable=False)
+    date = db.Column(db.String, nullable=False)
+    capacity = db.Column(db.Integer, nullable=True)
+    cost = db.Column(db.Integer, nullable=True)
+    description = db.Column(db.String)
 
     organizer = db.relationship(
         "User", backref=db.backref("organized_events", lazy=True)
@@ -29,7 +31,7 @@ class Event(db.Model, SerializerMixin):
     )
 
     # serialize_rules = ("-organized_events", "-payments.event", "-tickets.event")
-    serialize_only=("name", )
+    serialize_only = ("name", "date","time","description","capacity","id")
 
 
 class User(db.Model, SerializerMixin):
@@ -51,7 +53,7 @@ class User(db.Model, SerializerMixin):
         db.DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow
     )
 
-    serialize_only = ("name", )
+    serialize_only = ("name", "email", "phone", "id", "organizer")
 
 
 class Ticket(db.Model, SerializerMixin):
@@ -66,7 +68,7 @@ class Ticket(db.Model, SerializerMixin):
         db.DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow
     )
 
-    serialize_rules = ("-user.tickets", "-event.tickets")
+    serialize_rules = ("-user", "-event")
 
 
 class Payment(db.Model, SerializerMixin):
@@ -85,4 +87,3 @@ class Payment(db.Model, SerializerMixin):
     )
 
     serialize_rules = ("-user.payments", "-event.payments")
-s

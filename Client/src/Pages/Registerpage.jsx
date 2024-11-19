@@ -4,26 +4,33 @@ import * as Yup from "yup";
 import registerPicture from "../assets/wetransfer_3-jpg_2024-11-08_0922/Premium Vector � Event party ticket template.jpg"; // Add your image path here
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "./LoginPage.css";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
   const [notification, setNotification] = useState(""); // State for notifications
+  const navigate = useNavigate();
 
   // Validation schema using Yup
   const validationSchema = Yup.object({
     name: Yup.string().required("Name is required"),
-    email: Yup.string().email("Invalid email format").required("Email is required"),
-    phoneNumber: Yup.string().required("Phone number is required"),
-    password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
+    email: Yup.string()
+      .email("Invalid email format")
+      .required("Email is required"),
+    phone: Yup.string().required("Phone number is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
   });
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     setNotification(""); // Clear previous notifications
 
     // Log form data to console
+    values["organizer"] = "False";
     console.log("Registering user:", values);
 
     // Send the form data to the backend
-    fetch("/api/register", {
+    fetch("http://127.0.0.1:5000/user/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +40,9 @@ const RegisterPage = () => {
       .then((response) => {
         setSubmitting(false);
         if (!response.ok) {
-          throw new Error("Failed to register. Please check your input and try again.");
+          throw new Error(
+            "Failed to register. Please check your input and try again."
+          );
         }
         return response.json();
       })
@@ -41,13 +50,14 @@ const RegisterPage = () => {
         if (data.success) {
           setNotification("Registration successful! You may now log in.");
           resetForm();
-        } else {
-          setNotification(data.message || "Registration failed. You may already be registered.");
+          setTimeout(() => {
+            navigate("/login");
+          }, 3000);
         }
       })
       .catch((error) => {
-        console.error("Error:", error);
-        setNotification("An error occurred. Please try again.");
+        console.error(error);
+        setNotification("Failed Try again. NB/-cant register twice!");
         setSubmitting(false);
       });
   };
@@ -60,7 +70,11 @@ const RegisterPage = () => {
 
       {/* Notification message */}
       {notification && (
-        <div className="alert alert-info w-100 text-center" role="alert" style={{ maxWidth: "1000px" }}>
+        <div
+          className="alert alert-info w-100 text-center"
+          role="alert"
+          style={{ maxWidth: "1000px" }}
+        >
           {notification}
         </div>
       )}
@@ -72,7 +86,7 @@ const RegisterPage = () => {
               initialValues={{
                 name: "",
                 email: "",
-                phoneNumber: "",
+                phone: "",
                 password: "",
               }}
               validationSchema={validationSchema}
@@ -91,7 +105,11 @@ const RegisterPage = () => {
                       className="form-control"
                       placeholder="Enter your name"
                     />
-                    <ErrorMessage name="name" component="div" className="text-danger" />
+                    <ErrorMessage
+                      name="name"
+                      component="div"
+                      className="text-danger"
+                    />
                   </div>
                   <div className="form-group mb-4">
                     <label htmlFor="email" className="form-label">
@@ -104,20 +122,28 @@ const RegisterPage = () => {
                       className="form-control"
                       placeholder="Enter your email"
                     />
-                    <ErrorMessage name="email" component="div" className="text-danger" />
+                    <ErrorMessage
+                      name="email"
+                      component="div"
+                      className="text-danger"
+                    />
                   </div>
                   <div className="form-group mb-4">
-                    <label htmlFor="phoneNumber" className="form-label">
+                    <label htmlFor="phone" className="form-label">
                       Phone Number
                     </label>
                     <Field
                       type="text"
-                      id="phoneNumber"
-                      name="phoneNumber"
+                      id="phone"
+                      name="phone"
                       className="form-control"
                       placeholder="Enter your phone number"
                     />
-                    <ErrorMessage name="phoneNumber" component="div" className="text-danger" />
+                    <ErrorMessage
+                      name="phone"
+                      component="div"
+                      className="text-danger"
+                    />
                   </div>
                   <div className="form-group mb-4">
                     <label htmlFor="password" className="form-label">
@@ -130,7 +156,11 @@ const RegisterPage = () => {
                       className="form-control"
                       placeholder="Enter your password"
                     />
-                    <ErrorMessage name="password" component="div" className="text-danger" />
+                    <ErrorMessage
+                      name="password"
+                      component="div"
+                      className="text-danger"
+                    />
                   </div>
                   <div className="d-flex justify-content-center mt-4">
                     <button
@@ -161,4 +191,3 @@ const RegisterPage = () => {
 };
 
 export default RegisterPage;
-

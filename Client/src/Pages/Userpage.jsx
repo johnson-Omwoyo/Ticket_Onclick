@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import avatar from "../assets/wetransfer_3-jpg_2024-11-08_0922/Screenshot from 2024-11-12 12-04-09.png";
 import "./User.css"; // Fixed the import path by removing the space
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { persistor } from "../store";
 
 function UserProfilePage() {
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  const [userDetails, setUserDetails] = useState({
-    name: "Johnson Omwoyo",
-    email: "johnson@gmail.com",
-    phone: "+254 78263827",
-  });
+  const userdata = useSelector((state) => state.data.data);
+  console.log(userdata);
+
+  const [userDetails, setUserDetails] = useState(userdata);
 
   const [formData, setFormData] = useState({ ...userDetails });
   const [formErrors, setFormErrors] = useState({});
@@ -83,9 +84,12 @@ function UserProfilePage() {
 
   const handleLogout = () => {
     setLoading(true);
+    persistor.purge();
+    localStorage.removeItem("details");
     setTimeout(() => {
+      navigate("/");
       setLoading(false);
-      console.log("User  Logged Out");
+      window.location.reload();
     }, 2000);
   };
 
@@ -182,7 +186,7 @@ function UserProfilePage() {
                             />
                             <div>
                               <span className="owner rounded">Owner</span>
-                              <p className="mb-0 mt-2">Johnson Omwoyo</p>
+                              <p className="mb-0 mt-2">{userDetails.name}</p>
                             </div>
                           </div>
                           <div className="row">
