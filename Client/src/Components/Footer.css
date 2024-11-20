@@ -1,6 +1,6 @@
 .footer {
-    background-color: #CFCFCF;
-    color: #000000;
+    background-color:#05254d;
+    color: white;
   }
   
   .footer h5 {
@@ -23,6 +23,7 @@
     display: flex;
     justify-content: center;
     gap: 15px;
+    color: green;
   }
   
   .footer-icon {
@@ -64,6 +65,7 @@
 
   .social-icons a{
    text-decoration: none;
+   color: white;
   }
 
   

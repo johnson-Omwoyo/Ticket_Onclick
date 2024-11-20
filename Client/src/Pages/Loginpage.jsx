@@ -39,7 +39,6 @@ const LoginPage = () => {
             setNotification("Successfully logged in!");
 
             localStorage.setItem("token", data.token);
-            
 
             setTimeout(() => {
               navigate("/", { state: true });
@@ -57,25 +56,25 @@ const LoginPage = () => {
   });
 
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center py-5 bg-dark">
-      <h3 className="text-white font-weight-bold mb-4 text-center w-100">
+    <div className="d-flex flex-column justify-content-center align-items-center py-5">
+      <h3 className="text-black font-weight-bold mb-4 text-center w-100">
         Login
       </h3>
       {notification && (
-        <div className="mt-3 text-center text-light">
+        <div className="mt-3 text-center text-black">
           <strong>{notification}</strong>
         </div>
       )}
       <div className="card shadow-lg p-4 w-100" style={{ maxWidth: "1000px" }}>
         <div className="row">
           <div className="col-md-6">
-            <h4 className="text-center">Login</h4>
+            <h4 className="text-center text-white">Login</h4>
 
             <hr />
             <form onSubmit={formik.handleSubmit}>
               <div className="form-group mb-4">
                 <label htmlFor="email" className="form-label">
-                  Username
+                  Email
                 </label>
                 <input
                   type="text"
@@ -112,7 +111,7 @@ const LoginPage = () => {
               <div className="d-flex justify-content-center mt-4">
                 <button
                   type="submit"
-                  className="btn btn-danger w-100"
+                  className="btn w-100"
                   style={{ maxWidth: "120px" }}
                 >
                   Login

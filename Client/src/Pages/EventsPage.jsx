@@ -61,7 +61,9 @@ function EventsPage() {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const response = await fetch("https://ticket-onclick.onrender.com/event/all"); // Replace with your API endpoint
+        const response = await fetch(
+          "https://ticket-onclick.onrender.com/event/all"
+        ); // Replace with your API endpoint
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -93,7 +95,7 @@ function EventsPage() {
         <div className="col">
           {categories.map((category) => {
             return (
-              <div className="container" key={category}>
+              <div className="container " key={category}>
                 {" "}
                 {/* Added key for React element uniqueness */}
                 <div className="row">
@@ -152,7 +154,7 @@ function EventsPage() {
                     ))
                 ) : (
                   <div className="eventcard row d-flex justify-content-between align-items-center events-container p-2">
-                    <h2 className="sport-headings m-0 ">
+                    <h2 style={{color:"black"}} className="sport-headings m-0 ">
                       Not availabe Coming soon...
                     </h2>
                   </div>

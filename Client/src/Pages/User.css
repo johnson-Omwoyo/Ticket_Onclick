@@ -21,11 +21,11 @@
 .profile-navigator {
   border: solid 1px white;
   background-color: #343f55;
- min-height: 480px;
+  min-height: 480px;
 }
 .profile-container {
   background-color: #c2b19c;
-  position:relative;
+  position: relative;
   min-height: 670px;
 }
 .profile-container p {
@@ -68,11 +68,14 @@
 .profile-title {
   font-family: "Russo One";
 }
-.account-title{
+.account-title {
   font-family: "Russo One";
-color: antiquewhite;
+  color: antiquewhite;
 }
-.profiled-tickets .view-event{
+.profiled-tickets .view-event {
   cursor: pointer;
   color: #9e2020;
+}
+.profiled-tickets .card {
+  background: white;
 }

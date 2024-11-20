@@ -216,7 +216,7 @@ function Navbar() {
                 <>
                   {location.pathname != "/login" && (
                     <button
-                      className="btn btn-primary rounded-pill me-3 px-4"
+                      className="btn  rounded-pill me-3 px-4"
                       onClick={() => {
                         handleClick("/login");
                       }}

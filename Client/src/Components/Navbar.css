@@ -2,15 +2,15 @@
   color: aliceblue;
 }
 .navbar-ground {
-  background: #343f55;
+  background: #05254d;
   border-radius: 12px;
 }
 .navbar-ground .btn {
   color: white;
 }
 .navbar-ground .rounded-pill {
-  color: #343f55;
-  background: white;
+  color: white;
+  background: #028043;
 }
 .navbar-ground .rounded-pill:hover {
   border: 1px solid white;
@@ -42,7 +42,7 @@
 }
 .active {
   font-weight: 700;
-  color: rgb(236, 236, 253);
+  color: rgb(103, 233, 103); 
 }
 .logo {
   cursor: pointer;

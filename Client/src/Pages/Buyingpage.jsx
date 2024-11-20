@@ -110,12 +110,13 @@ function Buyingpage() {
                       <h2 className="ticket-type">{ticket.type}</h2>
                       <h2 className="ticket-price ms-auto">${ticket.cost}</h2>
                       <button
-                        className="btn btn-primary mx-5"
+                      
+                        className="btn mx-5"
                         onClick={() => handleOpen(ticket)}
                       >
                         <i
                           className="fa-solid fa-cart-shopping"
-                          style={{ color: "white", fontSize: "32px" }}
+                          style={{ color:"green" , fontSize: "32px" }}
                         ></i>
                       </button>
                     </div>

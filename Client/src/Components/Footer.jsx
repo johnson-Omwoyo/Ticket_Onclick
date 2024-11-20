@@ -39,7 +39,7 @@ function Footer() {
 
                     {/* Social Media Links */}
                     <div className="col-md-4  mb-3">
-                      <h5>Follow Us</h5>
+                      <h5 style={{ color: "white" }}>Follow Us</h5>
                       <div className="d-flex flex-column social-icons">
                         <a href="https://facebook.com" className="footer-icon">
                           <i className="mx-2 fa-brands fa-facebook"></i>
