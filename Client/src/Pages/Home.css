@@ -1,7 +1,7 @@
 .hero-text {
   font-family: "Roboto", sans-serif;
   font-size: 12px;
-  background: #918f8a;
+  background: #05254d;
   color: white;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -34,7 +34,7 @@
   font-family: "Russo One", sans-serif;
   position: relative;
   display: inline-block;
-  /* color: black; */
+  color: white;
 }
 .category-heading::after {
   content: "";
@@ -43,23 +43,25 @@
   left: -10px;
   right: -10px;
   height: 4px;
-  background-color: black;
+  background-color: white;
 }
 .categories {
-  background-color: #c2b19c;
+  background-color: #05254d;
 }
 .category-card {
-  border-radius: 15px;
+  border-radius: 1px;
 }
 .category-description {
   font-family: sans-serif;
   font-size: 12px;
   font-weight: 50;
+  color:white
 }
 .category-name {
   font-family: sans-serif;
   font-size: 18px;
   font-weight: 550;
+  color:white
 }
 
 .category-body img {
@@ -83,8 +85,9 @@
 .the-card {
   position: relative;
   transition: transform 0.3s ease, opacity 3s ease;
-  border-radius: 44px;
-  background-color: rgb(247, 245, 245);
+  border-radius: 190px;
+  /* background-color: rgb(247, 245, 245); */
+  
 
   max-width: 300px;
 }
@@ -95,15 +98,18 @@
   cursor: pointer;
 }
 .ticket {
-  font-family: "Russo One";
+  /* font-family: "Russo One"; */
+  font-weight:700;
   margin-bottom: -24px;
   margin-top: -12px;
-  color: beige;
+  color: #028043;
 }
 .onclick {
-  font-family: "Russo One";
+  /* font-family: "Russo One"; */
+  font-weight:700;
+
   margin: -12px;
-  color: #c2b19c;
+  color: white;
 }
 .quotes {
   font-size: 100px;
@@ -181,4 +187,7 @@
 }
 .footer-image-bg {
   background: #2a1e11;
+}
+.category-body .card{
+  background: #028043;
 }

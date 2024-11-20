@@ -142,8 +142,13 @@ class LoginResource(Resource):
         return {"message": "Invalid credentials"}, 401
 
 
+class getUser (Resource):
+    def get(self):
+        return [user.to_dict() for user in User.query.all()]
+
 api.add_resource(UserResource, "/user", "/user/register", "/user/<int:user_id>")
 api.add_resource(LoginResource, "/user/login")
+api.add_resource(getUser,"/users/all")
 
 
 """{ "name": "john",
