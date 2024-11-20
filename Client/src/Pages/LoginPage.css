@@ -6,7 +6,7 @@ body {
 }
 
 .card {
-  background-color: #f8f9fa;
+  background-color: #05254d;
   border-radius: 15px;
 }
 
@@ -26,13 +26,15 @@ body {
   border-radius: 10px;
 }
 
-.btn-danger {
+.mt-4 .btn {
   font-weight: bold;
   border-radius: 8px;
   padding: 10px;
   transition: background-color 0.3s;
+  background: green;
+  color:white
 }
 
-.btn-danger:hover {
-  background-color: darkred;
+.mt-4 .btn:hover {
+  background-color: rgb(9, 95, 9);
 }

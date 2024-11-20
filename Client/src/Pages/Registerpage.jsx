@@ -63,7 +63,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center bg-dark py-5">
+    <div className="d-flex flex-column justify-content-center align-items-center py-5">
       <h3 className="text-white font-weight-bold mb-4 text-center w-100">
         Register
       </h3>
@@ -165,7 +165,7 @@ const RegisterPage = () => {
                   <div className="d-flex justify-content-center mt-4">
                     <button
                       type="submit"
-                      className="btn btn-danger w-100"
+                      className="btn  w-100"
                       style={{ maxWidth: "120px" }}
                       disabled={isSubmitting}
                     >
