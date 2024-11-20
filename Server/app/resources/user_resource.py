@@ -60,7 +60,7 @@ class UserResource(Resource):
         if not user_id:
             return {"message": "User ID is required"}, 400
 
-        user = User.query.get_or_404(user_id)
+        user = User.query.get_or_404(int(user_id))
 
         parser = reqparse.RequestParser()
         parser.add_argument("name", type=str, help="Name of the user")
