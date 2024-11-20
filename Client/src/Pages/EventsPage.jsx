@@ -154,7 +154,7 @@ function EventsPage() {
                     ))
                 ) : (
                   <div className="eventcard row d-flex justify-content-between align-items-center events-container p-2">
-                    <h2 className="sport-headings m-0 ">
+                    <h2 style={{color:"black"}} className="sport-headings m-0 ">
                       Not availabe Coming soon...
                     </h2>
                   </div>

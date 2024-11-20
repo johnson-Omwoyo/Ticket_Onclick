@@ -121,7 +121,8 @@
 }
 .reviews-section {
   border-radius: 12px;
-  background: rgb(221, 220, 220);
+  background: #05254d;
+  color:white
 }
 .reviews-section p {
   font-family: "Roboto";
@@ -130,7 +131,7 @@
   opacity: 0.8;
 }
 .static-numbers {
-  background: rgb(221, 220, 220);
+  background: white;
   border-radius: 12px;
   padding: 10px;
 }
@@ -146,10 +147,11 @@
 }
 .statistics {
   border-radius: 12px;
-  background: rgb(240, 236, 236);
+  background: #05254d;
 }
 .our-part {
-  background: #d6d5d5;
+  background: #05254d;
+  color: white;
 }
 .our-part h5 {
   font-weight: 600;
@@ -165,7 +167,8 @@
   position: relative;
   font-weight: 300;
 
-  /* color: black; */
+
+  color: #05254d;
   /* font-size: 46px; */
 }
 .about-heading::after {
@@ -175,7 +178,7 @@
   left: 10px;
   right: 10px;
   height: 4px;
-  background-color: black;
+  background-color: #05254d;
 }
 .abou {
   background: rgb(250, 249, 249);

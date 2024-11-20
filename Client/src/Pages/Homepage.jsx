@@ -206,7 +206,7 @@ function Homepage() {
                                 alt=""
                               />
                               <p>
-                                <i className=" quotes fa-solid fa-quote-left"></i>{" "}
+                                <i style={{color:"white"}} className=" quotes fa-solid fa-quote-left"></i>{" "}
                                 Lorem ipsum dolor sit amet consectetur
                                 adipisicing elit. Adipisci alias at quam, iste
                                 obcaecati suscipit dolorem reiciendis veritatis
