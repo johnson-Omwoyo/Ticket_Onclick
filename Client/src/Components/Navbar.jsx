@@ -167,7 +167,7 @@ function Navbar() {
                         className="offcanvas-title"
                         id="offcanvasWithBothOptionsLabel"
                       >
-                        Johnson Omwoyo
+                        Ticket Oclick{" "}
                       </h5>
                       <button
                         type="button"
