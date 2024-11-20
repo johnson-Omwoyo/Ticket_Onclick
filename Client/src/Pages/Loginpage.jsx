@@ -39,7 +39,6 @@ const LoginPage = () => {
             setNotification("Successfully logged in!");
 
             localStorage.setItem("token", data.token);
-            
 
             setTimeout(() => {
               navigate("/", { state: true });
@@ -75,7 +74,7 @@ const LoginPage = () => {
             <form onSubmit={formik.handleSubmit}>
               <div className="form-group mb-4">
                 <label htmlFor="email" className="form-label">
-                  Username
+                  Email
                 </label>
                 <input
                   type="text"

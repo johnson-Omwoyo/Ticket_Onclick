@@ -27,10 +27,13 @@ function Homepage() {
     useEffect(() => {
       const getUser = async () => {
         try {
-          const response = await fetch("https://ticket-onclick.onrender.com/user", {
-            method: "GET",
-            headers: { Authorization: `Bearer ${token}` },
-          });
+          const response = await fetch(
+            "https://ticket-onclick.onrender.com/user",
+            {
+              method: "GET",
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          );
           if (!response.ok) {
             throw new Error("some issues occured reload");
           }
@@ -62,7 +65,7 @@ function Homepage() {
     },
     {
       image: sportsPhoto,
-      name: "SPORTS",
+      name: "SPORT",
       description: "ALL ABOUT THE BEAUTIFUL GAMES",
     },
     {
@@ -206,7 +209,10 @@ function Homepage() {
                                 alt=""
                               />
                               <p>
-                                <i style={{color:"white"}} className=" quotes fa-solid fa-quote-left"></i>{" "}
+                                <i
+                                  style={{ color: "white" }}
+                                  className=" quotes fa-solid fa-quote-left"
+                                ></i>{" "}
                                 Lorem ipsum dolor sit amet consectetur
                                 adipisicing elit. Adipisci alias at quam, iste
                                 obcaecati suscipit dolorem reiciendis veritatis

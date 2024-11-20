@@ -23,10 +23,13 @@ function UserProfilePage() {
     // Simulate fetching data from an API
     const fetchEvents = async () => {
       try {
-        const response = await fetch("https://ticket-onclick.onrender.com/ticket", {
-          method: "GET",
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const response = await fetch(
+          "https://ticket-onclick.onrender.com/ticket",
+          {
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         if (!response.ok) {
           throw new Error("some issues occured reload");
         }
@@ -92,7 +95,6 @@ function UserProfilePage() {
     if (!email || !/\S+@\S+\.\S+/.test(email))
       errors.email = "Valid email is required";
     if (!phone) errors.phone = "Phone number is required";
-    if (!location) errors.location = "Location is required";
 
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
@@ -174,17 +176,6 @@ function UserProfilePage() {
                 >
                   Ticket History
                 </p>
-                <button
-                  onClick={handleLogout}
-                  className="btn btn-danger w-100"
-                  style={{ maxWidth: "150px" }}
-                >
-                  Logout{" "}
-                  <i
-                    style={{ color: "white" }}
-                    className="mx-2 fa-solid fa-right-from-bracket"
-                  ></i>
-                </button>
               </div>
               <div className="col pb-4">
                 <div className="container-fluid">
